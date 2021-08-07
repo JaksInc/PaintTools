@@ -1,6 +1,7 @@
 const assets = [
     "/",
     "/scaler.html",
+    "/images/brushIcon-128.png",
     "/images/brushIcon-144.png",
     "/images/brushIcon-192.png",
     "/images/brushIcon-512.png"
