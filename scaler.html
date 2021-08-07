@@ -1,0 +1,177 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Paint Tools Alpha</title>
+        <meta name="description" content="Tools for the paint desk.">
+        <meta name="theme-color" content="#888888">
+        <link rel="manifest" href="manifest.json">
+        <script>
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", function() {
+                    navigator.serviceWorker.register("/sw.js");
+                });
+            }
+        </script>
+    </head>
+    
+<body onload="addRow()">
+    <h1>Paint Color Scaler</h1>
+    <div class="layoutContainer">
+        <!-- <div>
+            <div>Color</div>
+            <div>Ounces</div>
+            <div>Drops</div>
+            <div>Scaling percent</div>
+            <div>New Ounces</div>
+            <div>New Drops</div>
+        </div> -->
+        <!-- <div class="row">
+            <select class="selectedColor">
+                <option value="Select color">Select color</option>
+                <option value="AXL">AXL</option>
+                <option value="BL">BL</option>
+                <option value="CL">CL</option>
+                <option value="DL">DL</option>
+                <option value="EL">EL</option>
+                <option value="FL">FL</option>
+                <option value="IL">IL</option>
+                <option value="JL">JL</option>
+                <option value="KXL">KXL</option>
+                <option value="LL">LL</option>
+                <option value="RL">RL</option>
+                <option value="RUL">RUL</option>
+                <option value="TL">TL</option>
+                <option value="VL">VL</option>
+                <option value="VUL">VUL</option>
+                <option value="YL">YL</option>
+            </select>
+            <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+            <input class="percentage" placeholder="Percentage" type="number" min="-99999" max="99999">
+            <input class="newOunces" placeholder="Output" size="3" disabled="true">
+            <input class="newDrops" placeholder="Output" size="3" disabled="true">
+        </div> -->
+    </div>
+    <button class="scaleButton">Scale</button>
+    <button class="addRowButton">Add Row</button>
+</body>
+</html>
+
+
+<script>
+    const scaleButton = document.querySelector(".scaleButton");
+    scaleButton.addEventListener("click", calculateNewFormula);
+    const addRowButton = document.querySelector(".addRowButton");
+    addRowButton.addEventListener("click", addRow);
+    const layoutContainer = document.querySelector(".layoutContainer");
+
+    function calculateNewFormula() {
+        for (let i = 1; i < layoutContainer.childElementCount; i++) {
+            currentRow = layoutContainer.children[i]
+
+            //Get the values from the current row
+            // let selectedColor = currentRow.querySelector(".selectedColor").value;
+            let ounces = + currentRow.querySelector(".ounces").value;
+            let drops = + currentRow.querySelector(".drops").value;
+            let percentage = + currentRow.querySelector(".percentage").value;
+
+            //Math time
+            let totalDrops = (ounces * 384) + drops;
+            let totalDropsAfterScaling = totalDrops * ((percentage + 100) / 100);
+
+            let newOunces = Math.floor(totalDropsAfterScaling / 384);
+            let newDrops = Math.round((totalDropsAfterScaling % 384) * 2) / 2;
+
+            //Set the two result boxes values
+            currentRow.querySelector(".newOunces").value = newOunces;
+            currentRow.querySelector(".newDrops").value = newDrops;
+        }
+    }
+
+    function addRow() {
+        let selectedColor = document.createElement("select");
+        let colors = ["Select color", "AXL", "BL", "CL", "DL", "EL", "FL", "IL", "JL", "KXL", "LL", "RL", "RUL", "TL", "VL", "VUL", "YL"]
+        for (let i = 0; i < colors.length; i++) {
+            let option = document.createElement("option")
+            option.value = colors[i]
+            option.text = colors[i]
+            selectedColor.appendChild(option)
+        }
+        selectedColor.setAttribute("class", "selectedColor")
+
+        let ounces = document.createElement("input");
+        ounces.setAttribute("class", "ounces");
+        ounces.setAttribute("placeholder", "Ounces");
+        ounces.setAttribute("type", "number");
+        ounces.setAttribute("min", "0");
+        ounces.setAttribute("max", "100");
+
+        let drops = document.createElement("input");
+        drops.setAttribute("class", "drops");
+        drops.setAttribute("placeholder", "Drops");
+        drops.setAttribute("type", "number");
+        drops.setAttribute("min", "0");
+        drops.setAttribute("max", "383");
+
+
+        let percentage = document.createElement("input");
+        percentage.setAttribute("class", "percentage");
+        percentage.setAttribute("placeholder", "Percentage");
+        percentage.setAttribute("type", "number");
+        percentage.setAttribute("min", "-99999");
+        percentage.setAttribute("max", "99999");
+
+        let newOunces = document.createElement("input");
+        newOunces.setAttribute("class", "newOunces");
+        newOunces.setAttribute("placeholder", "Output");
+        newOunces.setAttribute("size", "3");
+        newOunces.setAttribute("disabled", "true");
+
+        let newDrops = document.createElement("input");
+        newDrops.setAttribute("class", "newDrops");
+        newDrops.setAttribute("placeholder", "Output");
+        newDrops.setAttribute("size", "3");
+        newDrops.setAttribute("disabled", "true");
+
+        let newDiv = document.createElement("div");
+        newDiv.setAttribute("class", "row")
+
+        newDiv.appendChild(selectedColor);
+        newDiv.appendChild(ounces);
+        newDiv.appendChild(drops);
+        newDiv.appendChild(percentage);
+        newDiv.appendChild(newOunces);
+        newDiv.appendChild(newDrops);
+
+        layoutContainer.appendChild(newDiv);
+    }
+</script>
+
+<style>
+    body {
+        background-color: gray;
+        max-width: 400;
+    }
+
+    .layoutContainer>div>* {
+        display: inline-table;
+        width: 24%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .scaleButton {
+        display: inline-table;
+        width: 24%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .addRowButton {
+        display: inline-table;
+        width: 24%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+</style>
