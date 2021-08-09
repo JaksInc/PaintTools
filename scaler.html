@@ -1,8 +1,9 @@
 <html>
     <head>
+        <title>Paint Tools Alpha</title>
+        <!-- This section is for PWA stuff -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Paint Tools Alpha</title>
         <meta name="description" content="Tools for the paint desk.">
         <meta name="theme-color" content="#888888">
         <link rel="manifest" href="manifest.json">
@@ -13,10 +14,12 @@
                 });
             }
         </script>
+        <!-- End PWA stuff -->
     </head>
     
 <body onload="addRow()">
     <h1>Paint Color Scaler</h1>
+    <!-- Where the rows of formula stuff go -->
     <div class="layoutContainer">
         <!-- <div>
             <div>Color</div>
@@ -56,17 +59,32 @@
     <button class="scaleButton">Scale</button>
     <button class="addRowButton">Add Row</button>
 </body>
+
+<!-- Navigation bar -->
+<ul>
+    <li>
+        <a href="scaler.html" class="active">Home</a>
+    </li>
+    <li>
+        <a href="scaler.html">Other Page</a>
+    </li>
+</ul>
 </html>
 
 
 <script>
+    //Adds event listeners for the two buttons
     const scaleButton = document.querySelector(".scaleButton");
     scaleButton.addEventListener("click", calculateNewFormula);
     const addRowButton = document.querySelector(".addRowButton");
     addRowButton.addEventListener("click", addRow);
-    const layoutContainer = document.querySelector(".layoutContainer");
 
+    //Gets our layoutcontainer for adding rows
+    const layoutContainer = document.querySelector(".layoutContainer");
+    
+    
     function calculateNewFormula() {
+        //When the "Scale" button is pressed, it will calculate the results for every row and put them in the output slots.
         for (let i = 0; i < layoutContainer.childElementCount; i++) {
             currentRow = layoutContainer.children[i]
 
@@ -90,6 +108,7 @@
     }
 
     function addRow() {
+        //Adds a new row with all the inputs and outputs
         let selectedColor = document.createElement("select");
         let colors = ["Select color", "AXL", "BL", "CL", "DL", "EL", "FL", "IL", "JL", "KXL", "LL", "RL", "RUL", "TL", "VL", "VUL", "YL"]
         for (let i = 0; i < colors.length; i++) {
@@ -149,11 +168,11 @@
 </script>
 
 <style>
-    body {
+    html {
         background-color: gray;
-        max-width: 400;
     }
 
+    /* Sections of a row */
     .layoutContainer>div>* {
         display: inline-table;
         width: 24%;
@@ -161,6 +180,7 @@
         padding-bottom: 10px;
     }
 
+    /* Buttons */
     .scaleButton {
         display: inline-table;
         width: 24%;
@@ -172,6 +192,38 @@
         width: 24%;
         padding-top: 10px;
         padding-bottom: 10px;
+    }
+    
+    /* Navigation bar */
+    ul {
+        position: fixed;
+        bottom: 0;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li {
+        float: left;
+    }
+
+    .active {
+        background-color: #EA6200; /*TODO*/
+        color: black;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: #111;
     }
 
 </style>
