@@ -18,9 +18,9 @@
     </head>
     
 <body onload="addRow()">
-    <h1>Paint Color Scaler</h1>
+    <h1 id="page-title">Paint Color Scaler</h1>
     <!-- Where the rows of formula stuff go -->
-    <div class="layoutContainer">
+    <div id="layoutContainer">
         <!-- <div>
             <div>Color</div>
             <div>Ounces</div>
@@ -56,31 +56,35 @@
             <input class="newDrops" placeholder="Output" size="3" disabled="true">
         </div> -->
     </div>
-    <button class="scaleButton">Scale</button>
-    <button class="addRowButton">Add Row</button>
+    <button id="scaleButton">Scale</button><button id="addRowButton">Add Row</button>
 </body>
 
 <!-- Navigation bar -->
-<ul>
+<nav>
     <li>
         <a href="scaler.html" class="active">Home</a>
-    </li>
-    <li>
+    </li><li>
         <a href="scaler.html">Other Page</a>
+    </li><li>
+        <a href="scaler.html">Third Page</a>
+    </li><li>
+        <a href="scaler.html">Forth Page</a>
+    </li><li>
+        <a href="scaler.html">Fifth Page</a>
     </li>
-</ul>
+</nav>
 </html>
 
 
 <script>
     //Adds event listeners for the two buttons
-    const scaleButton = document.querySelector(".scaleButton");
+    const scaleButton = document.querySelector("#scaleButton");
     scaleButton.addEventListener("click", calculateNewFormula);
-    const addRowButton = document.querySelector(".addRowButton");
+    const addRowButton = document.querySelector("#addRowButton");
     addRowButton.addEventListener("click", addRow);
 
     //Gets our layoutcontainer for adding rows
-    const layoutContainer = document.querySelector(".layoutContainer");
+    const layoutContainer = document.querySelector("#layoutContainer");
     
     
     function calculateNewFormula() {
@@ -168,49 +172,70 @@
 </script>
 
 <style>
+    /* Global variable stuff */
+    :root {
+        /* --main-theme-color: #EA6200; */
+        --main-theme-color: #0081ea;
+        
+
+    }
     html {
         background-color: gray;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     /* Sections of a row */
-    .layoutContainer>div>* {
+    #layoutContainer>div>* {
         display: inline-table;
         width: 24%;
+        min-width: min-content;
+        max-width: 100px;
         padding-top: 10px;
         padding-bottom: 10px;
+        margin-left: 1%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    /* Buttons */
+    Button {
+        display: inline-table;
+        width: 24%;
+        min-width: min-content;
+        max-width: 100px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: var(--main-theme-color);
+        border: solid var(--main-theme-color);
+        transition-duration: 100ms;
+        margin-left: 1%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    /* Buttons */
-    .scaleButton {
-        display: inline-table;
-        width: 24%;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .addRowButton {
-        display: inline-table;
-        width: 24%;
-        padding-top: 10px;
-        padding-bottom: 10px;
+    Button:hover {
+        background-color: var(--main-theme-color);
     }
     
     /* Navigation bar */
-    ul {
+    nav {
         position: fixed;
         bottom: 0;
+        left: 0;
+        right: 0; /* Fills the entire bottom row*/
         list-style-type: none;
         margin: 0;
         padding: 0;
-        overflow: hidden;
+        overflow: auto;
+        white-space: nowrap;
         background-color: #333;
     }
 
     li {
-        float: left;
+        border-right: 1px solid gray;
+        display: inline-block;
     }
 
     .active {
-        background-color: #EA6200; /*TODO*/
+        background-color: var(--main-theme-color); /*TODO*/
         color: black;
     }
 
@@ -220,10 +245,13 @@
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
+        transition-duration: 100ms;
     }
 
     li a:hover {
         background-color: #111;
+        color: white;
+        transition-duration: 100ms;
     }
 
 </style>

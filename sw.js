@@ -1,3 +1,5 @@
+const version = "0.0.1"
+
 const assets = [
     "./",
     "./scaler.html",
