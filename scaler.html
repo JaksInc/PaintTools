@@ -21,15 +21,7 @@
     <h1 id="page-title">Paint Color Scaler</h1>
     <!-- Where the rows of formula stuff go -->
     <div id="layoutContainer">
-        <!-- <div>
-            <div>Color</div>
-            <div>Ounces</div>
-            <div>Drops</div>
-            <div>Scaling percent</div>
-            <div>New Ounces</div>
-            <div>New Drops</div>
-        </div> -->
-        <!-- <div class="row">
+        <div class="row">
             <select class="selectedColor">
                 <option value="Select color">Select color</option>
                 <option value="AXL">AXL</option>
@@ -54,7 +46,7 @@
             <input class="percentage" placeholder="Percentage" type="number" min="-99999" max="99999">
             <input class="newOunces" placeholder="Output" size="3" disabled="true">
             <input class="newDrops" placeholder="Output" size="3" disabled="true">
-        </div> -->
+        </div>
     </div>
     <button id="scaleButton">Scale</button><button id="addRowButton">Add Row</button>
 </body>
@@ -176,15 +168,10 @@
     :root {
         /* --main-theme-color: #EA6200; */
         --main-theme-color: #0081ea;
-        
-
-    }
-    html {
-        background-color: gray;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    /* Sections of a row */
+    /* CSS related to this page only */
+    /* Sections of each row */
     #layoutContainer>div>* {
         display: inline-table;
         width: 24%;
@@ -195,9 +182,36 @@
         margin-left: 1%;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    
+
+    #scaleButton {
+        display: inline-table;
+        width: 24%;
+        min-width: min-content;
+        max-width: 100px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: var(--main-theme-color);
+        border: solid var(--main-theme-color);
+        transition-duration: 100ms;
+        margin-left: 1%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* CSS related to all pages ?TODO move to seperate CSS file? */
+    html {
+        background-color: gray;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        /* Centers the page */
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 960px;
+    }
+
     /* Buttons */
-    Button {
+    #addRowButton {
         display: inline-table;
         width: 24%;
         min-width: min-content;
