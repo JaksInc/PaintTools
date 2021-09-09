@@ -2,6 +2,7 @@
     <head>
         <title>Paint Tools Alpha</title>
         <!-- This section is for PWA stuff -->
+        <link rel="stylesheet" href="all-pages.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="description" content="Tools for the paint desk.">
@@ -16,19 +17,11 @@
         </script>
         <!-- End PWA stuff -->
     </head>
-    
+
 <body onload="addRow()">
     <h1 id="page-title">Paint Color Scaler</h1>
     <!-- Where the rows of formula stuff go -->
     <div id="layoutContainer">
-        <!-- <div>
-            <div>Color</div>
-            <div>Ounces</div>
-            <div>Drops</div>
-            <div>Scaling percent</div>
-            <div>New Ounces</div>
-            <div>New Drops</div>
-        </div> -->
         <!-- <div class="row">
             <select class="selectedColor">
                 <option value="Select color">Select color</option>
@@ -62,15 +55,15 @@
 <!-- Navigation bar -->
 <nav>
     <li>
-        <a href="scaler.html" class="active">Home</a>
+        <a href="scaler.html" class="active">Scaler</a>
     </li><li>
-        <a href="scaler.html">Other Page</a>
+        <a href="combiner.html">Combiner</a>
     </li><li>
-        <a href="scaler.html">Third Page</a>
+        <a href="">Third Page</a>
     </li><li>
-        <a href="scaler.html">Forth Page</a>
+        <a href="">Forth Page</a>
     </li><li>
-        <a href="scaler.html">Fifth Page</a>
+        <a href="">Fifth Page</a>
     </li>
 </nav>
 </html>
@@ -85,8 +78,8 @@
 
     //Gets our layoutcontainer for adding rows
     const layoutContainer = document.querySelector("#layoutContainer");
-    
-    
+
+
     function calculateNewFormula() {
         //When the "Scale" button is pressed, it will calculate the results for every row and put them in the output slots.
         for (let i = 0; i < layoutContainer.childElementCount; i++) {
@@ -172,21 +165,16 @@
 </script>
 
 <style>
-    /* Global variable stuff */
-    :root {
-        /* --main-theme-color: #EA6200; */
-        --main-theme-color: #0081ea;
-        
-
+    /* CSS related to this page only */
+    /* Sections of each row */
+    #layoutContainer {
+        display: table;
     }
-    html {
-        background-color: gray;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    #layoutContainer>div {
+        display: table-row;
     }
-
-    /* Sections of a row */
     #layoutContainer>div>* {
-        display: inline-table;
+        display: table-cell;
         width: 24%;
         min-width: min-content;
         max-width: 100px;
@@ -195,63 +183,4 @@
         margin-left: 1%;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    
-    /* Buttons */
-    Button {
-        display: inline-table;
-        width: 24%;
-        min-width: min-content;
-        max-width: 100px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        background-color: var(--main-theme-color);
-        border: solid var(--main-theme-color);
-        transition-duration: 100ms;
-        margin-left: 1%;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    Button:hover {
-        background-color: var(--main-theme-color);
-    }
-    
-    /* Navigation bar */
-    nav {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0; /* Fills the entire bottom row*/
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: auto;
-        white-space: nowrap;
-        background-color: #333;
-    }
-
-    li {
-        border-right: 1px solid gray;
-        display: inline-block;
-    }
-
-    .active {
-        background-color: var(--main-theme-color); /*TODO*/
-        color: black;
-    }
-
-    li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        transition-duration: 100ms;
-    }
-
-    li a:hover {
-        background-color: #111;
-        color: white;
-        transition-duration: 100ms;
-    }
-
 </style>

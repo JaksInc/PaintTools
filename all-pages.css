@@ -1,0 +1,71 @@
+/* Global variable stuff */
+    :root {
+        /* --main-theme-color: #EA6200; */
+        --main-theme-color: #0081ea;
+    }
+    /* CSS related to all pages ?TODO move to seperate CSS file? */
+    html {
+        background-color: gray;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        /* Centers the page */
+        margin-left: auto;
+        margin-right: auto;
+        /* max-width: 960px; */
+    }
+
+    /* Buttons */
+    Button {
+        display: inline-table;
+        width: 24%;
+        min-width: min-content;
+        max-width: 100px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: var(--main-theme-color);
+        border: solid var(--main-theme-color);
+        transition-duration: 100ms;
+        margin-left: 1%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Navigation bar */
+    nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0; /* Fills the entire bottom row*/
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: auto;
+        white-space: nowrap;
+        background-color: #333;
+    }
+
+    li {
+        border-right: 1px solid gray;
+        display: inline-block;
+    }
+
+    .active {
+        background-color: var(--main-theme-color); /*TODO*/
+        color: black;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        transition-duration: 100ms;
+    }
+
+    li a:hover {
+        background-color: #111;
+        color: white;
+        transition-duration: 100ms;
+    }
