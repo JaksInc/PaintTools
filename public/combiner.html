@@ -24,8 +24,8 @@
 
 <body>
     <h1 id="page-title">Color Combiner</h1>
-    <div id="layoutContainer">
-        <div id="tableA">
+    <div id="colorsContainer">
+        <div id="colorA" class="color">
             <div id="colorSelectorRowA">
                 <select class="selectedColor">
                     <option value="Select color">Select color</option>
@@ -124,22 +124,22 @@
                 </select>
             </div>
             <div id="ouncesRowA">
-                    <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
-                    <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
-                    <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
-                    <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
-                    <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
             </div>
             <div id="dropsRowA">
-                    <input class="drops" placeholder="Drops" type="number" min="0" max="383">
-                    <input class="drops" placeholder="Drops" type="number" min="0" max="383">
-                    <input class="drops" placeholder="Drops" type="number" min="0" max="383">
-                    <input class="drops" placeholder="Drops" type="number" min="0" max="383">
-                    <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
             </div>
         </div>
-        <div id="tableB">
-            <div id="colorSelectorRowB">
+        <div id="colorB" class="color">
+            <div id="colorSelectorRow">
                 <select class="selectedColor">
                     <option value="Select color">Select color</option>
                     <option value="AXL">AXL</option>
@@ -252,6 +252,7 @@
             </div>
         </div>
     </div>
+
     <button id=combineButton>Combine</button>
     <h1>Results</h1>
     <div id="resultsArea">
@@ -305,30 +306,26 @@
             return newColor
         }
 
-        function createColors() {
-            var colorA = {}; //start up the dictionary
-            const tableA = document.querySelector("#tableA");
-            for (i = 0; i < 5; i++) { //This doesn't go through the divs, just selects which element in each div to get
-                let color = tableA.children[0].children[i].value;
-                let ounces = + tableA.children[1].children[i].value;
-                let drops = + tableA.children[2].children[i].value;
-                colorA[color] = [ounces, drops];
+        function createFormulas(container) { //TODO change this to the new list of colorants
+            let formulas = []; //start up the list
+            let table = document.querySelector(container);
+            for (i = 0; i < table.children.length; i++) { //Iterates through each table
+                let color = {}; //start up the dictionary
+                for (j = 0; j < 5; j++) { //Iterates through each column. i is the table, j is the column
+                    let colorant = table.children[i].children[0].children[j].value;
+                    let ounces = + table.children[i].children[1].children[j].value;
+                    let drops = + table.children[i].children[2].children[j].value;
+                    color[colorant] = [ounces, drops];
+                }
+                formulas.push(color);
             }
-            var colorB = {};
-            const tableB = document.querySelector("#tableB");
-            for (i = 0; i < 5; i++) {
-                let color = tableB.children[0].children[i].value;
-                let ounces = + tableB.children[1].children[i].value;
-                let drops = + tableB.children[2].children[i].value;
-                colorB[color] = [ounces, drops];
-            }
-            return [colorA, colorB]
+            return formulas;
         }
 
         const combineButton = document.querySelector("#combineButton");
         combineButton.addEventListener("click", combineButtonClicked);
         function combineButtonClicked() {
-            let colors = createColors();
+            let colors = createFormulas("#colorsContainer");
             let combinedColor = combineColors(colors[0], colors[1]);
             newstring = "";
             for (color in combinedColor) {
@@ -340,35 +337,3 @@
             resultsArea.innerHTML = newstring //TODO make it prettier
         }
 </script>
-<style> */
-    #layoutContainer {
-        display: table-row;
-        width: 100%;
-    }
-
-    #tableA, #tableB {
-        display: table;
-        padding: 3px 10px;
-    }
-
-    #tableA div, #tableB div {
-        display: table-row;
-        width: 100%;
-    }
-
-    #tableA div *, #tableB div * {
-        width: 20%;
-        border: 2px solid var(--main-theme-color);
-        display: table-cell;
-    }
-
-    #layoutContainer div div * {
-        width: 20%;
-        display: table-cell;
-        /* min-width: fit-content;
-        max-width: 100px; */
-        padding-top: 10px;
-        padding-bottom: 10px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-</style>

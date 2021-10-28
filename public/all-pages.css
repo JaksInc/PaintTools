@@ -3,7 +3,7 @@
         /* --main-theme-color: #EA6200; */
         --main-theme-color: #0081ea;
     }
-    /* CSS related to all pages ?TODO move to seperate CSS file? */
+    /* CSS related to all pages */
     html {
         background-color: gray;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,7 +13,27 @@
         /* Centers the page */
         margin-left: auto;
         margin-right: auto;
-        /* max-width: 960px; */
+        max-width: 960px;
+    }
+
+    /* Color template */
+    #colorsContainer {
+        display: table-row;
+        width: 100%;
+    }
+    #colorsContainer div {
+        display: table;
+        padding: 3px 10px;
+    }
+    #colorsContainer div * {
+        border: 2px solid var(--main-theme-color);
+        display: table-row;
+        box-sizing: border-box;
+        width: 100px;
+        margin: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     /* Buttons */
@@ -36,7 +56,7 @@
         position: fixed;
         bottom: 0;
         left: 0;
-        right: 0; /* Fills the entire bottom row*/
+        right: 0;
         list-style-type: none;
         margin: 0;
         padding: 0;
@@ -51,7 +71,7 @@
     }
 
     .active {
-        background-color: var(--main-theme-color); /*TODO*/
+        background-color: var(--main-theme-color);
         color: black;
     }
 
