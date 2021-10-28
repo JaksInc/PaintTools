@@ -24,7 +24,7 @@
 <body onload="addRow()">
     <h1 id="page-title">Paint Color Scaler</h1>
     <!-- Where the rows of formula stuff go -->
-    <div id="layoutContainer">
+    <div id="colorsContainer">
         <!-- <div class="row">
             <select class="selectedColor">
                 <option value="Select color">Select color</option>
@@ -80,7 +80,7 @@
     addRowButton.addEventListener("click", addRow);
 
     //Gets our layoutcontainer for adding rows
-    const layoutContainer = document.querySelector("#layoutContainer");
+    const layoutContainer = document.querySelector("#colorsContainer");
 
 
     function calculateNewFormula() {
@@ -154,7 +154,7 @@
         newDrops.setAttribute("disabled", "true");
 
         let newDiv = document.createElement("div");
-        newDiv.setAttribute("class", "row")
+        newDiv.setAttribute("class", "color")
 
         newDiv.appendChild(selectedColor);
         newDiv.appendChild(ounces);
@@ -166,24 +166,3 @@
         layoutContainer.appendChild(newDiv);
     }
 </script>
-
-<style>
-    /* CSS related to this page only */
-    /* Sections of each row */
-    #layoutContainer {
-        display: table;
-    }
-    #layoutContainer>div {
-        display: table-row;
-    }
-    #layoutContainer>div>* {
-        display: table-cell;
-        width: 24%;
-        min-width: min-content;
-        max-width: 100px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        margin-left: 1%;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-</style>
