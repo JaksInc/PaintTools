@@ -153,6 +153,8 @@
         </select>
     </div>
     <button id="resizeButton">Resize</button>
+
+    <h1>Results</h1>
     <div id="resultsArea">
 
     </div>
@@ -162,17 +164,13 @@
 <nav>
     <li>
         <a href="scaler.html">Scaler</a>
-    </li>
-    <li>
+    </li><li>
         <a href="combiner.html">Combiner</a>
-    </li>
-    <li>
+    </li><li>
         <a href="resizer.html" class="active">Resizer</a>
-    </li>
-    <li>
+    </li><li>
         <a href="">Forth Page</a>
-    </li>
-    <li>
+    </li><li>
         <a href="">Fifth Page</a>
     </li>
 </nav>
@@ -197,22 +195,28 @@
 
     function resize(originalFormula, originalSize, newSize) {
         //color = {"KXL":[1,28]}
-        let scaleFactor = newSize / originalSize //In ounces
-        let resizedFormula = {}
+        let scaleFactor = newSize / originalSize; //In ounces
+        let resizedFormula = {};
         for (colorant in originalFormula) {
-            let resizedOunces = originalFormula[colorant][0] * scaleFactor
-            let resizedDrops = originalFormula[colorant][1] * scaleFactor
-            resizedFormula[colorant] = [resizedOunces, resizedDrops]
+            if (colorant == "Select color") {
+                continue;
+            }
+            let totalDrops = (originalFormula[colorant][0] * 384) + originalFormula[colorant][1];
+            let resizedDrops = totalDrops * scaleFactor;
+            let resizedOunces = Math.floor(resizedDrops / 384);
+            let resizedDropsRemainder = resizedDrops % 384;
+            resizedFormula[colorant] = [resizedOunces, resizedDropsRemainder];
         }
-        return resizedFormula
+        return resizedFormula;
     }
+
 
     const resizeButton = document.getElementById("resizeButton");
     resizeButton.addEventListener("click", function () {
         let originalFormula = createFormulas("#colorsContainer");
         let originalSize = +document.getElementById("originalSize").value;
         let newSize = +document.getElementById("newSize").value;
-        let resizedFormula = resize(originalFormula, originalSize, newSize)[0];
+        let resizedFormula = resize(originalFormula[0], originalSize, newSize);
         let resultsArea = document.getElementById("resultsArea");
         resultsArea.innerHTML = "";
         for (colorant in resizedFormula) {
