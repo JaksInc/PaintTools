@@ -267,7 +267,7 @@
     </li><li>
         <a href="combiner.html" class="active">Combiner</a>
     </li><li>
-        <a href="">Third Page</a>
+        <a href="resizer.html">Resizer</a>
     </li><li>
         <a href="">Forth Page</a>
     </li><li>
@@ -306,34 +306,34 @@
             return newColor
         }
 
-        function createFormulas(container) { //TODO change this to the new list of colorants
-            let formulas = []; //start up the list
-            let table = document.querySelector(container);
-            for (i = 0; i < table.children.length; i++) { //Iterates through each table
-                let color = {}; //start up the dictionary
-                for (j = 0; j < 5; j++) { //Iterates through each column. i is the table, j is the column
-                    let colorant = table.children[i].children[0].children[j].value;
-                    let ounces = + table.children[i].children[1].children[j].value;
-                    let drops = + table.children[i].children[2].children[j].value;
-                    color[colorant] = [ounces, drops];
-                }
-                formulas.push(color);
+    function createFormulas(container) { //TODO change this to the new list of colorants
+        let formulas = []; //start up the list
+        let table = document.querySelector(container);
+        for (i = 0; i < table.children.length; i++) { //Iterates through each table
+            let color = {}; //start up the dictionary
+            for (j = 0; j < 5; j++) { //Iterates through each column. i is the table, j is the column
+                let colorant = table.children[i].children[0].children[j].value;
+                let ounces = + table.children[i].children[1].children[j].value;
+                let drops = + table.children[i].children[2].children[j].value;
+                color[colorant] = [ounces, drops];
             }
-            return formulas;
+            formulas.push(color);
         }
+        return formulas;
+    }
 
-        const combineButton = document.querySelector("#combineButton");
-        combineButton.addEventListener("click", combineButtonClicked);
-        function combineButtonClicked() {
-            let colors = createFormulas("#colorsContainer");
-            let combinedColor = combineColors(colors[0], colors[1]);
-            newstring = "";
-            for (color in combinedColor) {
-                if (color !== "Select color") {
-                    newstring += color + ": " + combinedColor[color][0] + ", " + combinedColor[color][1];
-                }
+    const combineButton = document.querySelector("#combineButton");
+    combineButton.addEventListener("click", combineButtonClicked);
+    function combineButtonClicked() {
+        let colors = createFormulas("#colorsContainer");
+        let combinedColor = combineColors(colors[0], colors[1]);
+        newstring = "";
+        for (color in combinedColor) {
+            if (color !== "Select color") {
+                newstring += color + ": " + combinedColor[color][0] + ", " + combinedColor[color][1];
             }
-            let resultsArea = document.querySelector("#resultsArea");
-            resultsArea.innerHTML = newstring //TODO make it prettier
         }
+        let resultsArea = document.querySelector("#resultsArea");
+        resultsArea.innerHTML = newstring //TODO make it prettier
+    }
 </script>
