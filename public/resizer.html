@@ -204,7 +204,7 @@
             let totalDrops = (originalFormula[colorant][0] * 384) + originalFormula[colorant][1];
             let resizedDrops = totalDrops * scaleFactor;
             let resizedOunces = Math.floor(resizedDrops / 384);
-            let resizedDropsRemainder = resizedDrops % 384;
+            let resizedDropsRemainder = Math.floor((resizedDrops % 384) * 100) / 100;
             resizedFormula[colorant] = [resizedOunces, resizedDropsRemainder];
         }
         return resizedFormula;
