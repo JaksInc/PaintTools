@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paint Tools Alpha</title>
+    <link rel="stylesheet" href="all-pages.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <!-- This section is for PWA stuff -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Tools for the paint desk.">
+    <meta name="theme-color" content="#888888">
+    <link rel="manifest" href="manifest.json">
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function () {
+                navigator.serviceWorker.register("sw.js");
+            });
+        }
+    </script>
+    <!-- End PWA stuff -->
+</head>
+
+<body>
+    <h1 id="page-title">Formula Resizer</h1>
+    <div id="colorsContainer">
+        <div id="colorA" class="color">
+            <div id="colorSelectorRowA">
+                <select class="selectedColor">
+                    <option value="Select color">Select color</option>
+                    <option value="AXL">AXL</option>
+                    <option value="BL">BL</option>
+                    <option value="CL">CL</option>
+                    <option value="DL">DL</option>
+                    <option value="EL">EL</option>
+                    <option value="FL">FL</option>
+                    <option value="IL">IL</option>
+                    <option value="JL">JL</option>
+                    <option value="KXL">KXL</option>
+                    <option value="LL">LL</option>
+                    <option value="RL">RL</option>
+                    <option value="RUL">RUL</option>
+                    <option value="TL">TL</option>
+                    <option value="VL">VL</option>
+                    <option value="VUL">VUL</option>
+                    <option value="YL">YL</option>
+                </select>
+                <select class="selectedColor">
+                    <option value="Select color">Select color</option>
+                    <option value="AXL">AXL</option>
+                    <option value="BL">BL</option>
+                    <option value="CL">CL</option>
+                    <option value="DL">DL</option>
+                    <option value="EL">EL</option>
+                    <option value="FL">FL</option>
+                    <option value="IL">IL</option>
+                    <option value="JL">JL</option>
+                    <option value="KXL">KXL</option>
+                    <option value="LL">LL</option>
+                    <option value="RL">RL</option>
+                    <option value="RUL">RUL</option>
+                    <option value="TL">TL</option>
+                    <option value="VL">VL</option>
+                    <option value="VUL">VUL</option>
+                    <option value="YL">YL</option>
+                </select>
+                <select class="selectedColor">
+                    <option value="Select color">Select color</option>
+                    <option value="AXL">AXL</option>
+                    <option value="BL">BL</option>
+                    <option value="CL">CL</option>
+                    <option value="DL">DL</option>
+                    <option value="EL">EL</option>
+                    <option value="FL">FL</option>
+                    <option value="IL">IL</option>
+                    <option value="JL">JL</option>
+                    <option value="KXL">KXL</option>
+                    <option value="LL">LL</option>
+                    <option value="RL">RL</option>
+                    <option value="RUL">RUL</option>
+                    <option value="TL">TL</option>
+                    <option value="VL">VL</option>
+                    <option value="VUL">VUL</option>
+                    <option value="YL">YL</option>
+                </select>
+                <select class="selectedColor">
+                    <option value="Select color">Select color</option>
+                    <option value="AXL">AXL</option>
+                    <option value="BL">BL</option>
+                    <option value="CL">CL</option>
+                    <option value="DL">DL</option>
+                    <option value="EL">EL</option>
+                    <option value="FL">FL</option>
+                    <option value="IL">IL</option>
+                    <option value="JL">JL</option>
+                    <option value="KXL">KXL</option>
+                    <option value="LL">LL</option>
+                    <option value="RL">RL</option>
+                    <option value="RUL">RUL</option>
+                    <option value="TL">TL</option>
+                    <option value="VL">VL</option>
+                    <option value="VUL">VUL</option>
+                    <option value="YL">YL</option>
+                </select>
+                <select class="selectedColor">
+                    <option value="Select color">Select color</option>
+                    <option value="AXL">AXL</option>
+                    <option value="BL">BL</option>
+                    <option value="CL">CL</option>
+                    <option value="DL">DL</option>
+                    <option value="EL">EL</option>
+                    <option value="FL">FL</option>
+                    <option value="IL">IL</option>
+                    <option value="JL">JL</option>
+                    <option value="KXL">KXL</option>
+                    <option value="LL">LL</option>
+                    <option value="RL">RL</option>
+                    <option value="RUL">RUL</option>
+                    <option value="TL">TL</option>
+                    <option value="VL">VL</option>
+                    <option value="VUL">VUL</option>
+                    <option value="YL">YL</option>
+                </select>
+            </div>
+            <div id="ouncesRowA">
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+            </div>
+            <div id="dropsRowA">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+            </div>
+        </div>
+    </div>
+    <div id="sizeSelectors">
+        <select id="originalSize">
+            <option value="8">8 oz</option>
+            <option value="32">Quart</option>
+            <option value="128">Gallon</option>
+            <option value="640">5 Gallon</option>
+        </select>
+        <select id="newSize">
+            <option value="8">8 oz</option>
+            <option value="32">Quart</option>
+            <option value="128">Gallon</option>
+            <option value="640">5 Gallon</option>
+        </select>
+    </div>
+    <button id="resizeButton">Resize</button>
+
+    <h1>Results</h1>
+    <div id="resultsArea">
+
+    </div>
+</body>
+
+<!-- Navigation bar -->
+<nav>
+    <li>
+        <a href="scaler.html">Scaler</a>
+    </li><li>
+        <a href="combiner.html">Combiner</a>
+    </li><li>
+        <a href="resizer.html" class="active">Resizer</a>
+    </li><li>
+        <a href="">Forth Page</a>
+    </li><li>
+        <a href="">Fifth Page</a>
+    </li>
+</nav>
+</html>
+
+<script>
+    function createFormulas(container) { //TODO change this to the new list of colorants
+            let formulas = []; //start up the list
+            let table = document.querySelector(container);
+            for (i = 0; i < table.children.length; i++) { //Iterates through each table
+                let color = {}; //start up the dictionary
+                for (j = 0; j < 5; j++) { //Iterates through each column. i is the table, j is the column
+                    let colorant = table.children[i].children[0].children[j].value;
+                    let ounces = + table.children[i].children[1].children[j].value;
+                    let drops = + table.children[i].children[2].children[j].value;
+                    color[colorant] = [ounces, drops];
+                }
+                formulas.push(color);
+            }
+            return formulas;
+        }
+
+    function resize(originalFormula, originalSize, newSize) {
+        //color = {"KXL":[1,28]}
+        let scaleFactor = newSize / originalSize; //In ounces
+        let resizedFormula = {};
+        for (colorant in originalFormula) {
+            if (colorant == "Select color") {
+                continue;
+            }
+            let totalDrops = (originalFormula[colorant][0] * 384) + originalFormula[colorant][1];
+            let resizedDrops = totalDrops * scaleFactor;
+            let resizedOunces = Math.floor(resizedDrops / 384);
+            let resizedDropsRemainder = Math.floor((resizedDrops % 384) * 100) / 100;
+            resizedFormula[colorant] = [resizedOunces, resizedDropsRemainder];
+        }
+        return resizedFormula;
+    }
+
+
+    const resizeButton = document.getElementById("resizeButton");
+    resizeButton.addEventListener("click", function () {
+        let originalFormula = createFormulas("#colorsContainer");
+        let originalSize = +document.getElementById("originalSize").value;
+        let newSize = +document.getElementById("newSize").value;
+        let resizedFormula = resize(originalFormula[0], originalSize, newSize);
+        let resultsArea = document.getElementById("resultsArea");
+        resultsArea.innerHTML = "";
+        for (colorant in resizedFormula) {
+            let resizedOunces = resizedFormula[colorant][0];
+            let resizedDrops = resizedFormula[colorant][1];
+            resultsArea.innerHTML += `<div class="result">${colorant}: ${resizedOunces} oz, ${resizedDrops} drops</div>`
+        }
+    })
+</script>
