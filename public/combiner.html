@@ -256,6 +256,14 @@
     <button id=combineButton>Combine</button>
     <h1>Results</h1>
     <div id="resultsArea">
+        <table id="resultsTable">
+            <tr id="resultColorNames">
+            </tr>
+            <tr id=resultOunces>
+            </tr>
+            <tr id=resultDrops>
+            </tr>
+        </table>
 
     </div>
 </body>
@@ -322,18 +330,38 @@
         return formulas;
     }
 
+    function displayResults(formula) {
+            let resultsTable = document.getElementById("resultsTable");
+            //clear results table
+            for (i = 0; i < resultsTable.children.length; i++) {
+                for (j = 0; j < resultsTable.children[i].children.length; j++) {
+                    resultsTable.children[i].children[j].innerHTML = "";
+                }
+            }
+            let resultColorNames = document.getElementById("resultColorNames");
+            let resultOunces = document.getElementById("resultOunces");
+            let resultDrops = document.getElementById("resultDrops");
+            for (colorant in formula) {
+                if (colorant == "Select color") {
+                    continue;
+                }
+                let colorName = document.createElement("td");
+                colorName.innerHTML = colorant;
+                resultColorNames.appendChild(colorName);
+                let ounces = document.createElement("td");
+                ounces.innerHTML = formula[colorant][0];
+                resultOunces.appendChild(ounces);
+                let drops = document.createElement("td");
+                drops.innerHTML = formula[colorant][1];
+                resultDrops.appendChild(drops);
+            }
+        }
+
     const combineButton = document.querySelector("#combineButton");
     combineButton.addEventListener("click", combineButtonClicked);
     function combineButtonClicked() {
         let colors = createFormulas("#colorsContainer");
         let combinedColor = combineColors(colors[0], colors[1]);
-        newstring = "";
-        for (color in combinedColor) {
-            if (color !== "Select color") {
-                newstring += color + ": " + combinedColor[color][0] + ", " + combinedColor[color][1];
-            }
-        }
-        let resultsArea = document.querySelector("#resultsArea");
-        resultsArea.innerHTML = newstring; //TODO make it prettier
+        displayResults(combinedColor);
     }
 </script>

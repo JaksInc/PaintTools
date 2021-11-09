@@ -30,10 +30,32 @@
         display: table-row;
         box-sizing: border-box;
         width: 100px;
-        margin: 0;
+        margin: 0px;
         padding-top: 10px;
         padding-bottom: 10px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Data tables */
+    table, th, td {
+        background-color: white;
+        text-align: center;
+        color: black;
+        border: 2px solid var(--main-theme-color);
+        border-collapse: collapse;
+    }
+
+    td {
+        width: 40px;
+    }
+
+    select {
+        border: 2px solid var(--main-theme-color);
+        display: table-row;
+        box-sizing: border-box;
+        width: 100px;
+        margin: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 
     /* Buttons */
@@ -48,7 +70,6 @@
         border: solid var(--main-theme-color);
         transition-duration: 100ms;
         margin-left: 1%;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     /* Navigation bar */
