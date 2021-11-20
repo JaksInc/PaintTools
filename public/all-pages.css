@@ -7,6 +7,7 @@
     html {
         background-color: gray;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: medium;
     }
 
     body {
@@ -16,9 +17,9 @@
         max-width: 960px;
     }
     h1 {
-        font-size: 2px;
         color: black;
         text-align: left;
+        font-size: 2rem;
     }
 
     /* Color template */
@@ -34,10 +35,12 @@
         border: 2px solid var(--main-theme-color);
         display: table-row;
         box-sizing: border-box;
-        width: 100px;
+        width: 20%;
+        max-width: 120px;
         margin: 0px;
         padding-top: 10px;
         padding-bottom: 10px;
+        font-size: 1rem;
     }
 
     /* Data tables */
@@ -47,6 +50,7 @@
         color: black;
         border: 2px solid var(--main-theme-color);
         border-collapse: collapse;
+        font-weight: bold;
     }
     th {
         background-color: var(--main-theme-color);
@@ -62,7 +66,6 @@
         border: 2px solid var(--main-theme-color);
         display: table-row;
         box-sizing: border-box;
-        width: 100px;
         margin: 0px;
         padding-top: 10px;
         padding-bottom: 10px;
