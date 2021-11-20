@@ -15,6 +15,11 @@
         margin-right: auto;
         max-width: 960px;
     }
+    h1 {
+        font-size: 2px;
+        color: black;
+        text-align: left;
+    }
 
     /* Color template */
     #colorsContainer {
@@ -43,9 +48,14 @@
         border: 2px solid var(--main-theme-color);
         border-collapse: collapse;
     }
+    th {
+        background-color: var(--main-theme-color);
+        color: white;
+    }
 
     td {
         width: 40px;
+        background-color: lightgray;
     }
 
     select {
