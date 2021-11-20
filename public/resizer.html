@@ -144,8 +144,7 @@
             <option value="32">Quart</option>
             <option value="128">Gallon</option>
             <option value="640">5 Gallon</option>
-        </select>
-        <select id="newSize">
+        </select><select id="newSize">
             <option value="8">8 oz</option>
             <option value="32">Quart</option>
             <option value="128">Gallon</option>
@@ -156,6 +155,14 @@
 
     <h1>Results</h1>
     <div id="resultsArea">
+        <table id="resultsTable">
+            <tr id="resultColorNames">
+            </tr>
+            <tr id=resultOunces>
+            </tr>
+            <tr id=resultDrops>
+            </tr>
+        </table>
 
     </div>
 </body>
@@ -210,6 +217,32 @@
         return resizedFormula;
     }
 
+    function displayResults(formula) {
+        let resultsTable = document.getElementById("resultsTable");
+        //clear results table
+        for (i = 0; i < resultsTable.children.length; i++) {
+            for (j = 0; j < resultsTable.children[i].children.length; j++) {
+                resultsTable.children[i].children[j].innerHTML = "";
+            }
+        }
+        let resultColorNames = document.getElementById("resultColorNames");
+        let resultOunces = document.getElementById("resultOunces");
+        let resultDrops = document.getElementById("resultDrops");
+        for (colorant in formula) {
+            if (colorant == "Select color") {
+                continue;
+            }
+            let colorName = document.createElement("th");
+            colorName.innerHTML = colorant;
+            resultColorNames.appendChild(colorName);
+            let ounces = document.createElement("td");
+            ounces.innerHTML = formula[colorant][0];
+            resultOunces.appendChild(ounces);
+            let drops = document.createElement("td");
+            drops.innerHTML = formula[colorant][1];
+            resultDrops.appendChild(drops);
+        }
+    }
 
     const resizeButton = document.getElementById("resizeButton");
     resizeButton.addEventListener("click", function () {
@@ -217,12 +250,6 @@
         let originalSize = +document.getElementById("originalSize").value;
         let newSize = +document.getElementById("newSize").value;
         let resizedFormula = resize(originalFormula[0], originalSize, newSize);
-        let resultsArea = document.getElementById("resultsArea");
-        resultsArea.innerHTML = "";
-        for (colorant in resizedFormula) {
-            let resizedOunces = resizedFormula[colorant][0];
-            let resizedDrops = resizedFormula[colorant][1];
-            resultsArea.innerHTML += `<div class="result">${colorant}: ${resizedOunces} oz, ${resizedDrops} drops</div>`
-        }
+        displayResults(resizedFormula);
     })
 </script>
