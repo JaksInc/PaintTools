@@ -133,3 +133,7 @@
         color: white;
         transition-duration: 100ms;
     }
+
+    .externalWebsite {
+        font-style: oblique;
+    }
