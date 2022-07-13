@@ -1,7 +1,6 @@
 const version = "0.1.1"
 
 const assets = [
-    "/",
     "/all-pages.css",
     "/scaler.html",
     "/combiner.html",
