@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Paint Tools Alpha</title>
     <link rel="stylesheet" href="all-pages.css">
@@ -144,8 +145,7 @@
             <option value="32">Quart</option>
             <option value="128">Gallon</option>
             <option value="640">5 Gallon</option>
-        </select>
-        <select id="newSize">
+        </select><select id="newSize">
             <option value="8">8 oz</option>
             <option value="32">Quart</option>
             <option value="128">Gallon</option>
@@ -156,6 +156,14 @@
 
     <h1>Results</h1>
     <div id="resultsArea">
+        <table id="resultsTable">
+            <tr id="resultColorNames">
+            </tr>
+            <tr id=resultOunces>
+            </tr>
+            <tr id=resultDrops>
+            </tr>
+        </table>
 
     </div>
 </body>
@@ -163,21 +171,21 @@
 <!-- Navigation bar -->
 <nav>
     <li>
-        <a href="scaler.html">Scaler</a>
+        <a href="scaler.html">Scale</a>
     </li><li>
-        <a href="combiner.html">Combiner</a>
+        <a href="combiner.html">Combine</a>
     </li><li>
-        <a href="resizer.html" class="active">Resizer</a>
+        <a href="resizer.html" class="active">Resize</a>
     </li><li>
-        <a href="">Forth Page</a>
+        <a class="externalWebsite" href="https://encycolorpedia.com/">Encycolorpedia</a>
     </li><li>
-        <a href="">Fifth Page</a>
+        <a class="externalWebsite" href="https://www.easyrgb.com/en/match.php">EasyRGB</a>
     </li>
 </nav>
 </html>
 
 <script>
-    function createFormulas(container) { //TODO change this to the new list of colorants
+    function createFormulas(container) {
             let formulas = []; //start up the list
             let table = document.querySelector(container);
             for (i = 0; i < table.children.length; i++) { //Iterates through each table
@@ -210,6 +218,32 @@
         return resizedFormula;
     }
 
+    function displayResults(formula) {
+        let resultsTable = document.getElementById("resultsTable");
+        //clear results table
+        for (i = 0; i < resultsTable.children.length; i++) {
+            for (j = 0; j < resultsTable.children[i].children.length; j++) {
+                resultsTable.children[i].children[j].innerHTML = "";
+            }
+        }
+        let resultColorNames = document.getElementById("resultColorNames");
+        let resultOunces = document.getElementById("resultOunces");
+        let resultDrops = document.getElementById("resultDrops");
+        for (colorant in formula) {
+            if (colorant == "Select color") {
+                continue;
+            }
+            let colorName = document.createElement("th");
+            colorName.innerHTML = colorant;
+            resultColorNames.appendChild(colorName);
+            let ounces = document.createElement("td");
+            ounces.innerHTML = formula[colorant][0];
+            resultOunces.appendChild(ounces);
+            let drops = document.createElement("td");
+            drops.innerHTML = formula[colorant][1];
+            resultDrops.appendChild(drops);
+        }
+    }
 
     const resizeButton = document.getElementById("resizeButton");
     resizeButton.addEventListener("click", function () {
@@ -217,12 +251,6 @@
         let originalSize = +document.getElementById("originalSize").value;
         let newSize = +document.getElementById("newSize").value;
         let resizedFormula = resize(originalFormula[0], originalSize, newSize);
-        let resultsArea = document.getElementById("resultsArea");
-        resultsArea.innerHTML = "";
-        for (colorant in resizedFormula) {
-            let resizedOunces = resizedFormula[colorant][0];
-            let resizedDrops = resizedFormula[colorant][1];
-            resultsArea.innerHTML += `<div class="result">${colorant}: ${resizedOunces} oz, ${resizedDrops} drops</div>`
-        }
+        displayResults(resizedFormula);
     })
 </script>

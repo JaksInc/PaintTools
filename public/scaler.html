@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-    <head>
+
+<head>
         <title>Paint Tools Alpha</title>
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -19,150 +20,228 @@
             }
         </script>
         <!-- End PWA stuff -->
-    </head>
+</head>
 
-<body onload="addRow()">
-    <h1 id="page-title">Paint Color Scaler</h1>
-    <!-- Where the rows of formula stuff go -->
+<body>
+    <h1 id="page-title">Color Scaler</h1>
     <div id="colorsContainer">
-        <!-- <div class="row">
-            <select class="selectedColor">
-                <option value="Select color">Select color</option>
-                <option value="AXL">AXL</option>
-                <option value="BL">BL</option>
-                <option value="CL">CL</option>
-                <option value="DL">DL</option>
-                <option value="EL">EL</option>
-                <option value="FL">FL</option>
-                <option value="IL">IL</option>
-                <option value="JL">JL</option>
-                <option value="KXL">KXL</option>
-                <option value="LL">LL</option>
-                <option value="RL">RL</option>
-                <option value="RUL">RUL</option>
-                <option value="TL">TL</option>
-                <option value="VL">VL</option>
-                <option value="VUL">VUL</option>
-                <option value="YL">YL</option>
-            </select>
-            <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
-            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
-            <input class="percentage" placeholder="Percentage" type="number" min="-99999" max="99999">
-            <input class="newOunces" placeholder="Output" size="3" disabled="true">
-            <input class="newDrops" placeholder="Output" size="3" disabled="true">
-        </div> -->
+        <div id="colorA" class="color">
+            <div id="colorSelectorRowA">
+                <select class="selectedColor">
+                    <option value="Select color">Select color</option>
+                    <option value="AXL">AXL</option>
+                    <option value="BL">BL</option>
+                    <option value="CL">CL</option>
+                    <option value="DL">DL</option>
+                    <option value="EL">EL</option>
+                    <option value="FL">FL</option>
+                    <option value="IL">IL</option>
+                    <option value="JL">JL</option>
+                    <option value="KXL">KXL</option>
+                    <option value="LL">LL</option>
+                    <option value="RL">RL</option>
+                    <option value="RUL">RUL</option>
+                    <option value="TL">TL</option>
+                    <option value="VL">VL</option>
+                    <option value="VUL">VUL</option>
+                    <option value="YL">YL</option>
+                </select>
+                <select class="selectedColor">
+                    <option value="Select color">Select color</option>
+                    <option value="AXL">AXL</option>
+                    <option value="BL">BL</option>
+                    <option value="CL">CL</option>
+                    <option value="DL">DL</option>
+                    <option value="EL">EL</option>
+                    <option value="FL">FL</option>
+                    <option value="IL">IL</option>
+                    <option value="JL">JL</option>
+                    <option value="KXL">KXL</option>
+                    <option value="LL">LL</option>
+                    <option value="RL">RL</option>
+                    <option value="RUL">RUL</option>
+                    <option value="TL">TL</option>
+                    <option value="VL">VL</option>
+                    <option value="VUL">VUL</option>
+                    <option value="YL">YL</option>
+                </select>
+                <select class="selectedColor">
+                    <option value="Select color">Select color</option>
+                    <option value="AXL">AXL</option>
+                    <option value="BL">BL</option>
+                    <option value="CL">CL</option>
+                    <option value="DL">DL</option>
+                    <option value="EL">EL</option>
+                    <option value="FL">FL</option>
+                    <option value="IL">IL</option>
+                    <option value="JL">JL</option>
+                    <option value="KXL">KXL</option>
+                    <option value="LL">LL</option>
+                    <option value="RL">RL</option>
+                    <option value="RUL">RUL</option>
+                    <option value="TL">TL</option>
+                    <option value="VL">VL</option>
+                    <option value="VUL">VUL</option>
+                    <option value="YL">YL</option>
+                </select>
+                <select class="selectedColor">
+                    <option value="Select color">Select color</option>
+                    <option value="AXL">AXL</option>
+                    <option value="BL">BL</option>
+                    <option value="CL">CL</option>
+                    <option value="DL">DL</option>
+                    <option value="EL">EL</option>
+                    <option value="FL">FL</option>
+                    <option value="IL">IL</option>
+                    <option value="JL">JL</option>
+                    <option value="KXL">KXL</option>
+                    <option value="LL">LL</option>
+                    <option value="RL">RL</option>
+                    <option value="RUL">RUL</option>
+                    <option value="TL">TL</option>
+                    <option value="VL">VL</option>
+                    <option value="VUL">VUL</option>
+                    <option value="YL">YL</option>
+                </select>
+                <select class="selectedColor">
+                    <option value="Select color">Select color</option>
+                    <option value="AXL">AXL</option>
+                    <option value="BL">BL</option>
+                    <option value="CL">CL</option>
+                    <option value="DL">DL</option>
+                    <option value="EL">EL</option>
+                    <option value="FL">FL</option>
+                    <option value="IL">IL</option>
+                    <option value="JL">JL</option>
+                    <option value="KXL">KXL</option>
+                    <option value="LL">LL</option>
+                    <option value="RL">RL</option>
+                    <option value="RUL">RUL</option>
+                    <option value="TL">TL</option>
+                    <option value="VL">VL</option>
+                    <option value="VUL">VUL</option>
+                    <option value="YL">YL</option>
+                </select>
+            </div>
+            <div id="ouncesRowA">
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+            </div>
+            <div id="dropsRowA">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+            </div>
+            <div id="scalingRow">
+                <input class="percentage" placeholder="Percentage" type="number" min="-1000" max="1000">
+                <input class="percentage" placeholder="Percentage" type="number" min="-1000" max="1000">
+                <input class="percentage" placeholder="Percentage" type="number" min="-1000" max="1000">
+                <input class="percentage" placeholder="Percentage" type="number" min="-1000" max="1000">
+                <input class="percentage" placeholder="Percentage" type="number" min="-1000" max="1000">
+
+            </div>
+        </div>
     </div>
-    <button id="scaleButton">Scale</button><button id="addRowButton">Add Row</button>
+    <button id="scaleButton">Scale</button>
+    <h1>Results</h1>
+    <div id="resultsArea">
+        <table id="resultsTable">
+            <tr id="resultColorNames">
+            </tr>
+            <tr id=resultOunces>
+            </tr>
+            <tr id=resultDrops>
+            </tr>
+        </table>
+
+    </div>
 </body>
 
 <!-- Navigation bar -->
 <nav>
     <li>
-        <a href="scaler.html" class="active">Scaler</a>
+        <a href="scaler.html" class="active">Scale</a>
     </li><li>
-        <a href="combiner.html">Combiner</a>
+        <a href="combiner.html">Combine</a>
     </li><li>
-        <a href="resizer.html">Resizer</a>
+        <a href="resizer.html">Resize</a>
     </li><li>
-        <a href="">Forth Page</a>
+        <a class="externalWebsite" href="https://encycolorpedia.com/">Encycolorpedia</a>
     </li><li>
-        <a href="">Fifth Page</a>
+        <a class="externalWebsite" href="https://www.easyrgb.com/en/match.php">EasyRGB</a>
     </li>
 </nav>
 </html>
 
-
 <script>
     //Adds event listeners for the two buttons
-    const scaleButton = document.querySelector("#scaleButton");
-    scaleButton.addEventListener("click", calculateNewFormula);
-    const addRowButton = document.querySelector("#addRowButton");
-    addRowButton.addEventListener("click", addRow);
-
+    const scaleButton = document.querySelector("#scaleButton").addEventListener("click", scale);
     //Gets our layoutcontainer for adding rows
-    const layoutContainer = document.querySelector("#colorsContainer");
+    const colorContainer = document.querySelector("#colorA");
 
+    function createFormulas(container) {
+        let formulas = []; //start up the list
+        let table = document.querySelector(container);
+        for (i = 0; i < table.children.length; i++) { //Iterates through each table
+            let color = {}; //start up the dictionary
+            for (j = 0; j < 5; j++) { //Iterates through each column. i is the table, j is the column
+                let colorant = table.children[i].children[0].children[j].value;
+                let ounces = + table.children[i].children[1].children[j].value;
+                let drops = + table.children[i].children[2].children[j].value;
+                //specific for scaler
+                let percentage = + table.children[i].children[3].children[j].value;
+                color[colorant] = [ounces, drops, percentage];
+            }
+            formulas.push(color);
+        }
+        return formulas;
+    }
 
-    function calculateNewFormula() {
-        //When the "Scale" button is pressed, it will calculate the results for every row and put them in the output slots.
-        for (let i = 0; i < layoutContainer.childElementCount; i++) {
-            currentRow = layoutContainer.children[i]
+    function scale() {
+        formula = createFormulas("#colorsContainer")[0];
+        let scaledFormula = {};
+        for (colorant in formula) {
+            if (colorant == "Select color") {
+                continue;
+            }
+            let totalDrops = ((formula[colorant][0] * 384) + formula[colorant][1]) * (formula[colorant][2] / 100)
+            let ounces = Math.floor(totalDrops / 384);
+            let drops = Math.floor((totalDrops % 384) * 100) / 100;
+            scaledFormula[colorant] = [ounces, drops];
+        };
+        displayResults(scaledFormula)
+    }
 
-            //Get the values from the current row
-            // let selectedColor = currentRow.querySelector(".selectedColor").value;
-            let ounces = + currentRow.querySelector(".ounces").value;
-            let drops = + currentRow.querySelector(".drops").value;
-            let percentage = + currentRow.querySelector(".percentage").value;
-
-            //Math time
-            let totalDrops = (ounces * 384) + drops;
-            let totalDropsAfterScaling = totalDrops * ((percentage + 100) / 100);
-
-            let newOunces = Math.floor(totalDropsAfterScaling / 384);
-            let newDrops = Math.round((totalDropsAfterScaling % 384) * 2) / 2;
-
-            //Set the two result boxes values
-            currentRow.querySelector(".newOunces").value = newOunces;
-            currentRow.querySelector(".newDrops").value = newDrops;
+    function displayResults(formula) {
+        let resultsTable = document.getElementById("resultsTable");
+        //clear results table
+        for (i = 0; i < resultsTable.children.length; i++) {
+            for (j = 0; j < resultsTable.children[i].children.length; j++) {
+                resultsTable.children[i].children[j].innerHTML = "";
+            }
+        }
+        let resultColorNames = document.getElementById("resultColorNames");
+        let resultOunces = document.getElementById("resultOunces");
+        let resultDrops = document.getElementById("resultDrops");
+        for (colorant in formula) {
+            if (colorant == "Select color") {
+                continue;
+            }
+            let colorName = document.createElement("th");
+            colorName.innerHTML = colorant;
+            resultColorNames.appendChild(colorName);
+            let ounces = document.createElement("td");
+            ounces.innerHTML = formula[colorant][0];
+            resultOunces.appendChild(ounces);
+            let drops = document.createElement("td");
+            drops.innerHTML = formula[colorant][1];
+            resultDrops.appendChild(drops);
         }
     }
 
-    function addRow() {
-        //Adds a new row with all the inputs and outputs
-        let selectedColor = document.createElement("select");
-        let colors = ["Select color", "AXL", "BL", "CL", "DL", "EL", "FL", "IL", "JL", "KXL", "LL", "RL", "RUL", "TL", "VL", "VUL", "YL"]
-        for (let i = 0; i < colors.length; i++) {
-            let option = document.createElement("option")
-            option.value = colors[i]
-            option.text = colors[i]
-            selectedColor.appendChild(option)
-        }
-        selectedColor.setAttribute("class", "selectedColor")
-
-        let ounces = document.createElement("input");
-        ounces.setAttribute("class", "ounces");
-        ounces.setAttribute("placeholder", "Ounces");
-        ounces.setAttribute("type", "number");
-        ounces.setAttribute("min", "0");
-        ounces.setAttribute("max", "100");
-
-        let drops = document.createElement("input");
-        drops.setAttribute("class", "drops");
-        drops.setAttribute("placeholder", "Drops");
-        drops.setAttribute("type", "number");
-        drops.setAttribute("min", "0");
-        drops.setAttribute("max", "383");
-
-
-        let percentage = document.createElement("input");
-        percentage.setAttribute("class", "percentage");
-        percentage.setAttribute("placeholder", "Percentage");
-        percentage.setAttribute("type", "number");
-        percentage.setAttribute("min", "-99999");
-        percentage.setAttribute("max", "99999");
-
-        let newOunces = document.createElement("input");
-        newOunces.setAttribute("class", "newOunces");
-        newOunces.setAttribute("placeholder", "Output");
-        newOunces.setAttribute("size", "3");
-        newOunces.setAttribute("disabled", "true");
-
-        let newDrops = document.createElement("input");
-        newDrops.setAttribute("class", "newDrops");
-        newDrops.setAttribute("placeholder", "Output");
-        newDrops.setAttribute("size", "3");
-        newDrops.setAttribute("disabled", "true");
-
-        let newDiv = document.createElement("div");
-        newDiv.setAttribute("class", "color")
-
-        newDiv.appendChild(selectedColor);
-        newDiv.appendChild(ounces);
-        newDiv.appendChild(drops);
-        newDiv.appendChild(percentage);
-        newDiv.appendChild(newOunces);
-        newDiv.appendChild(newDrops);
-
-        layoutContainer.appendChild(newDiv);
-    }
 </script>
