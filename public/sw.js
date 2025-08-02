@@ -2,6 +2,7 @@ const version = "0.1.1"
 
 const assets = [
     "/all-pages.css",
+    "/common.js",
     "/scaler.html",
     "/combiner.html",
     "/resizer.html",

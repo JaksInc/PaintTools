@@ -1,127 +1,19 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Paint Tools Alpha</title>
-    <link rel="stylesheet" href="all-pages.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <!-- This section is for PWA stuff -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Tools for the paint desk.">
-    <meta name="theme-color" content="#888888">
-    <link rel="manifest" href="manifest.json">
-    <script>
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", function () {
-                navigator.serviceWorker.register("sw.js");
-            });
-        }
-    </script>
-    <!-- End PWA stuff -->
+    <script src="common.js"></script>
 </head>
-
 <body>
     <h1 id="page-title">Color Combiner</h1>
     <div id="colorsContainer">
         <div id="colorA" class="color">
             <div id="colorSelectorRowA">
-                <select class="selectedColor">
-                    <option value="Select color">Select color</option>
-                    <option value="AXL">AXL</option>
-                    <option value="BL">BL</option>
-                    <option value="CL">CL</option>
-                    <option value="DL">DL</option>
-                    <option value="EL">EL</option>
-                    <option value="FL">FL</option>
-                    <option value="IL">IL</option>
-                    <option value="JL">JL</option>
-                    <option value="KXL">KXL</option>
-                    <option value="LL">LL</option>
-                    <option value="RL">RL</option>
-                    <option value="RUL">RUL</option>
-                    <option value="TL">TL</option>
-                    <option value="VL">VL</option>
-                    <option value="VUL">VUL</option>
-                    <option value="YL">YL</option>
-                </select>
-                <select class="selectedColor">
-                    <option value="Select color">Select color</option>
-                    <option value="AXL">AXL</option>
-                    <option value="BL">BL</option>
-                    <option value="CL">CL</option>
-                    <option value="DL">DL</option>
-                    <option value="EL">EL</option>
-                    <option value="FL">FL</option>
-                    <option value="IL">IL</option>
-                    <option value="JL">JL</option>
-                    <option value="KXL">KXL</option>
-                    <option value="LL">LL</option>
-                    <option value="RL">RL</option>
-                    <option value="RUL">RUL</option>
-                    <option value="TL">TL</option>
-                    <option value="VL">VL</option>
-                    <option value="VUL">VUL</option>
-                    <option value="YL">YL</option>
-                </select>
-                <select class="selectedColor">
-                    <option value="Select color">Select color</option>
-                    <option value="AXL">AXL</option>
-                    <option value="BL">BL</option>
-                    <option value="CL">CL</option>
-                    <option value="DL">DL</option>
-                    <option value="EL">EL</option>
-                    <option value="FL">FL</option>
-                    <option value="IL">IL</option>
-                    <option value="JL">JL</option>
-                    <option value="KXL">KXL</option>
-                    <option value="LL">LL</option>
-                    <option value="RL">RL</option>
-                    <option value="RUL">RUL</option>
-                    <option value="TL">TL</option>
-                    <option value="VL">VL</option>
-                    <option value="VUL">VUL</option>
-                    <option value="YL">YL</option>
-                </select>
-                <select class="selectedColor">
-                    <option value="Select color">Select color</option>
-                    <option value="AXL">AXL</option>
-                    <option value="BL">BL</option>
-                    <option value="CL">CL</option>
-                    <option value="DL">DL</option>
-                    <option value="EL">EL</option>
-                    <option value="FL">FL</option>
-                    <option value="IL">IL</option>
-                    <option value="JL">JL</option>
-                    <option value="KXL">KXL</option>
-                    <option value="LL">LL</option>
-                    <option value="RL">RL</option>
-                    <option value="RUL">RUL</option>
-                    <option value="TL">TL</option>
-                    <option value="VL">VL</option>
-                    <option value="VUL">VUL</option>
-                    <option value="YL">YL</option>
-                </select>
-                <select class="selectedColor">
-                    <option value="Select color">Select color</option>
-                    <option value="AXL">AXL</option>
-                    <option value="BL">BL</option>
-                    <option value="CL">CL</option>
-                    <option value="DL">DL</option>
-                    <option value="EL">EL</option>
-                    <option value="FL">FL</option>
-                    <option value="IL">IL</option>
-                    <option value="JL">JL</option>
-                    <option value="KXL">KXL</option>
-                    <option value="LL">LL</option>
-                    <option value="RL">RL</option>
-                    <option value="RUL">RUL</option>
-                    <option value="TL">TL</option>
-                    <option value="VL">VL</option>
-                    <option value="VUL">VUL</option>
-                    <option value="YL">YL</option>
-                </select>
+                <select class="selectedColor"></select>
+                <select class="selectedColor"></select>
+                <select class="selectedColor"></select>
+                <select class="selectedColor"></select>
+                <select class="selectedColor"></select>
             </div>
             <div id="ouncesRowA">
                 <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
@@ -140,101 +32,11 @@
         </div>
         <div id="colorB" class="color">
             <div id="colorSelectorRow">
-                <select class="selectedColor">
-                    <option value="Select color">Select color</option>
-                    <option value="AXL">AXL</option>
-                    <option value="BL">BL</option>
-                    <option value="CL">CL</option>
-                    <option value="DL">DL</option>
-                    <option value="EL">EL</option>
-                    <option value="FL">FL</option>
-                    <option value="IL">IL</option>
-                    <option value="JL">JL</option>
-                    <option value="KXL">KXL</option>
-                    <option value="LL">LL</option>
-                    <option value="RL">RL</option>
-                    <option value="RUL">RUL</option>
-                    <option value="TL">TL</option>
-                    <option value="VL">VL</option>
-                    <option value="VUL">VUL</option>
-                    <option value="YL">YL</option>
-                </select>
-                <select class="selectedColor">
-                    <option value="Select color">Select color</option>
-                    <option value="AXL">AXL</option>
-                    <option value="BL">BL</option>
-                    <option value="CL">CL</option>
-                    <option value="DL">DL</option>
-                    <option value="EL">EL</option>
-                    <option value="FL">FL</option>
-                    <option value="IL">IL</option>
-                    <option value="JL">JL</option>
-                    <option value="KXL">KXL</option>
-                    <option value="LL">LL</option>
-                    <option value="RL">RL</option>
-                    <option value="RUL">RUL</option>
-                    <option value="TL">TL</option>
-                    <option value="VL">VL</option>
-                    <option value="VUL">VUL</option>
-                    <option value="YL">YL</option>
-                </select>
-                <select class="selectedColor">
-                    <option value="Select color">Select color</option>
-                    <option value="AXL">AXL</option>
-                    <option value="BL">BL</option>
-                    <option value="CL">CL</option>
-                    <option value="DL">DL</option>
-                    <option value="EL">EL</option>
-                    <option value="FL">FL</option>
-                    <option value="IL">IL</option>
-                    <option value="JL">JL</option>
-                    <option value="KXL">KXL</option>
-                    <option value="LL">LL</option>
-                    <option value="RL">RL</option>
-                    <option value="RUL">RUL</option>
-                    <option value="TL">TL</option>
-                    <option value="VL">VL</option>
-                    <option value="VUL">VUL</option>
-                    <option value="YL">YL</option>
-                </select>
-                <select class="selectedColor">
-                    <option value="Select color">Select color</option>
-                    <option value="AXL">AXL</option>
-                    <option value="BL">BL</option>
-                    <option value="CL">CL</option>
-                    <option value="DL">DL</option>
-                    <option value="EL">EL</option>
-                    <option value="FL">FL</option>
-                    <option value="IL">IL</option>
-                    <option value="JL">JL</option>
-                    <option value="KXL">KXL</option>
-                    <option value="LL">LL</option>
-                    <option value="RL">RL</option>
-                    <option value="RUL">RUL</option>
-                    <option value="TL">TL</option>
-                    <option value="VL">VL</option>
-                    <option value="VUL">VUL</option>
-                    <option value="YL">YL</option>
-                </select>
-                <select class="selectedColor">
-                    <option value="Select color">Select color</option>
-                    <option value="AXL">AXL</option>
-                    <option value="BL">BL</option>
-                    <option value="CL">CL</option>
-                    <option value="DL">DL</option>
-                    <option value="EL">EL</option>
-                    <option value="FL">FL</option>
-                    <option value="IL">IL</option>
-                    <option value="JL">JL</option>
-                    <option value="KXL">KXL</option>
-                    <option value="LL">LL</option>
-                    <option value="RL">RL</option>
-                    <option value="RUL">RUL</option>
-                    <option value="TL">TL</option>
-                    <option value="VL">VL</option>
-                    <option value="VUL">VUL</option>
-                    <option value="YL">YL</option>
-                </select>
+                <select class="selectedColor"></select>
+                <select class="selectedColor"></select>
+                <select class="selectedColor"></select>
+                <select class="selectedColor"></select>
+                <select class="selectedColor"></select>
             </div>
             <div id="ouncesRowB">
                 <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
@@ -253,115 +55,50 @@
         </div>
     </div>
 
-    <button id=combineButton>Combine</button>
+    <button id="combineButton">Combine</button>
     <h1>Results</h1>
     <div id="resultsArea">
         <table id="resultsTable">
-            <tr id="resultColorNames">
-            </tr>
-            <tr id=resultOunces>
-            </tr>
-            <tr id=resultDrops>
-            </tr>
+            <tr id="resultColorNames"></tr>
+            <tr id="resultOunces"></tr>
+            <tr id="resultDrops"></tr>
         </table>
-
     </div>
-</body>
-
-<!-- Navigation bar -->
-<nav>
-    <li>
-        <a href="scaler.html">Scale</a>
-    </li><li>
-        <a href="combiner.html" class="active">Combine</a>
-    </li><li>
-        <a href="resizer.html">Resize</a>
-    </li><li>
-        <a class="externalWebsite" href="https://encycolorpedia.com/">Encycolorpedia</a>
-    </li><li>
-        <a class="externalWebsite" href="https://www.easyrgb.com/en/match.php">EasyRGB</a>
-    </li>
-</nav>
-</html>
-
-<script>
-    function combineColors(colorA, colorB) {
-            //colorA and colorB are "dictionaries"
-            //colorA = {"KXL":[1,192], "LL":[0,192]}
+    <script>
+        function combineColors(colorA, colorB) {
             var newColor = {};
-            for (var color in colorA) { //color is the key, colorA[color] is the value
+            for (var color in colorA) {
                 let totalDropsDivideHalf = ((colorA[color][0] * 384) + colorA[color][1]) / 2;
                 let newOunces = Math.floor(totalDropsDivideHalf / 384);
                 let newDrops = Math.round((totalDropsDivideHalf % 384) * 2) / 2;
-                newColor[color] = [newOunces, newDrops]
+                newColor[color] = [newOunces, newDrops];
             }
             for (var color in colorB) {
                 let totalDropsDivideHalf = ((colorB[color][0] * 384) + colorB[color][1]) / 2;
                 let newOunces = Math.floor(totalDropsDivideHalf / 384);
                 let newDrops = Math.round((totalDropsDivideHalf % 384) * 2) / 2;
-                if (color in newColor) { //check if color already exists, if so add to it
+                if (color in newColor) {
                     newColor[color][0] += newOunces;
                     newColor[color][1] += newDrops;
-                    if (newColor[color][1] > 383) { // if adding colorB's drops caused it to go over an ounce, add the ounce and remove the drops
+                    if (newColor[color][1] > 383) {
                         newColor[color][0] += 1;
                         newColor[color][1] -= 384;
                     }
                 }
-                else { // Or make a new entry
+                else {
                     newColor[color] = [newOunces, newDrops];
                 }
             }
-            return newColor
+            return newColor;
         }
 
-    function createFormulas(container) { //TODO change this to the new list of colorants
-        let formulas = []; //start up the list
-        let table = document.querySelector(container);
-        for (let i = 0; i < table.children.length; i++) { //Iterates through each table
-            let color = {}; //start up the dictionary
-            for (let j = 0; j < 5; j++) { //Iterates through each column. i is the table, j is the column
-                let colorant = table.children[i].children[0].children[j].value;
-                let ounces = + table.children[i].children[1].children[j].value;
-                let drops = + table.children[i].children[2].children[j].value;
-                color[colorant] = [ounces, drops];
-            }
-            formulas.push(color);
+        const combineButton = document.querySelector("#combineButton");
+        combineButton.addEventListener("click", combineButtonClicked);
+        function combineButtonClicked() {
+            let colors = createFormulas("#colorsContainer");
+            let combinedColor = combineColors(colors[0], colors[1]);
+            displayResults(combinedColor);
         }
-        return formulas;
-    }
-
-    function displayResults(formula) {
-            let resultsTable = document.getElementById("resultsTable");
-            //clear results table
-            for (let i = 0; i < resultsTable.children.length; i++) {
-                for (let j = 0; j < resultsTable.children[i].children.length; j++) {
-                    resultsTable.children[i].children[j].innerHTML = "";
-                }
-            }
-            let resultColorNames = document.getElementById("resultColorNames");
-            let resultOunces = document.getElementById("resultOunces");
-            let resultDrops = document.getElementById("resultDrops");
-            for (const colorant in formula) {
-                if (colorant == "Select color") {
-                    continue;
-                }
-                let colorName = document.createElement("th");
-                colorName.innerHTML = colorant;
-                resultColorNames.appendChild(colorName);
-                let ounces = document.createElement("td");
-                ounces.innerHTML = formula[colorant][0];
-                resultOunces.appendChild(ounces);
-                let drops = document.createElement("td");
-                drops.innerHTML = formula[colorant][1];
-                resultDrops.appendChild(drops);
-            }
-        }
-
-    const combineButton = document.querySelector("#combineButton");
-    combineButton.addEventListener("click", combineButtonClicked);
-    function combineButtonClicked() {
-        let colors = createFormulas("#colorsContainer");
-        let combinedColor = combineColors(colors[0], colors[1]);
-        displayResults(combinedColor);
-    }
-</script>
+    </script>
+</body>
+</html>
