@@ -317,9 +317,9 @@
     function createFormulas(container) { //TODO change this to the new list of colorants
         let formulas = []; //start up the list
         let table = document.querySelector(container);
-        for (i = 0; i < table.children.length; i++) { //Iterates through each table
+        for (let i = 0; i < table.children.length; i++) { //Iterates through each table
             let color = {}; //start up the dictionary
-            for (j = 0; j < 5; j++) { //Iterates through each column. i is the table, j is the column
+            for (let j = 0; j < 5; j++) { //Iterates through each column. i is the table, j is the column
                 let colorant = table.children[i].children[0].children[j].value;
                 let ounces = + table.children[i].children[1].children[j].value;
                 let drops = + table.children[i].children[2].children[j].value;
@@ -333,15 +333,15 @@
     function displayResults(formula) {
             let resultsTable = document.getElementById("resultsTable");
             //clear results table
-            for (i = 0; i < resultsTable.children.length; i++) {
-                for (j = 0; j < resultsTable.children[i].children.length; j++) {
+            for (let i = 0; i < resultsTable.children.length; i++) {
+                for (let j = 0; j < resultsTable.children[i].children.length; j++) {
                     resultsTable.children[i].children[j].innerHTML = "";
                 }
             }
             let resultColorNames = document.getElementById("resultColorNames");
             let resultOunces = document.getElementById("resultOunces");
             let resultDrops = document.getElementById("resultDrops");
-            for (colorant in formula) {
+            for (const colorant in formula) {
                 if (colorant == "Select color") {
                     continue;
                 }
