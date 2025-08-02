@@ -1,105 +1,15 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="all-pages.css">
+    <script src="common.js"></script>
 </head>
 <div id="colorsContainer">
     <div id="colorA" class="color">
         <div id="colorSelectorRowA">
-            <select class="selectedColor">
-                <option value="Select color">Select color</option>
-                <option value="AXL">AXL</option>
-                <option value="BL">BL</option>
-                <option value="CL">CL</option>
-                <option value="DL">DL</option>
-                <option value="EL">EL</option>
-                <option value="FL">FL</option>
-                <option value="IL">IL</option>
-                <option value="JL">JL</option>
-                <option value="KXL">KXL</option>
-                <option value="LL">LL</option>
-                <option value="RL">RL</option>
-                <option value="RUL">RUL</option>
-                <option value="TL">TL</option>
-                <option value="VL">VL</option>
-                <option value="VUL">VUL</option>
-                <option value="YL">YL</option>
-            </select>
-            <select class="selectedColor">
-                <option value="Select color">Select color</option>
-                <option value="AXL">AXL</option>
-                <option value="BL">BL</option>
-                <option value="CL">CL</option>
-                <option value="DL">DL</option>
-                <option value="EL">EL</option>
-                <option value="FL">FL</option>
-                <option value="IL">IL</option>
-                <option value="JL">JL</option>
-                <option value="KXL">KXL</option>
-                <option value="LL">LL</option>
-                <option value="RL">RL</option>
-                <option value="RUL">RUL</option>
-                <option value="TL">TL</option>
-                <option value="VL">VL</option>
-                <option value="VUL">VUL</option>
-                <option value="YL">YL</option>
-            </select>
-            <select class="selectedColor">
-                <option value="Select color">Select color</option>
-                <option value="AXL">AXL</option>
-                <option value="BL">BL</option>
-                <option value="CL">CL</option>
-                <option value="DL">DL</option>
-                <option value="EL">EL</option>
-                <option value="FL">FL</option>
-                <option value="IL">IL</option>
-                <option value="JL">JL</option>
-                <option value="KXL">KXL</option>
-                <option value="LL">LL</option>
-                <option value="RL">RL</option>
-                <option value="RUL">RUL</option>
-                <option value="TL">TL</option>
-                <option value="VL">VL</option>
-                <option value="VUL">VUL</option>
-                <option value="YL">YL</option>
-            </select>
-            <select class="selectedColor">
-                <option value="Select color">Select color</option>
-                <option value="AXL">AXL</option>
-                <option value="BL">BL</option>
-                <option value="CL">CL</option>
-                <option value="DL">DL</option>
-                <option value="EL">EL</option>
-                <option value="FL">FL</option>
-                <option value="IL">IL</option>
-                <option value="JL">JL</option>
-                <option value="KXL">KXL</option>
-                <option value="LL">LL</option>
-                <option value="RL">RL</option>
-                <option value="RUL">RUL</option>
-                <option value="TL">TL</option>
-                <option value="VL">VL</option>
-                <option value="VUL">VUL</option>
-                <option value="YL">YL</option>
-            </select>
-            <select class="selectedColor">
-                <option value="Select color">Select color</option>
-                <option value="AXL">AXL</option>
-                <option value="BL">BL</option>
-                <option value="CL">CL</option>
-                <option value="DL">DL</option>
-                <option value="EL">EL</option>
-                <option value="FL">FL</option>
-                <option value="IL">IL</option>
-                <option value="JL">JL</option>
-                <option value="KXL">KXL</option>
-                <option value="LL">LL</option>
-                <option value="RL">RL</option>
-                <option value="RUL">RUL</option>
-                <option value="TL">TL</option>
-                <option value="VL">VL</option>
-                <option value="VUL">VUL</option>
-                <option value="YL">YL</option>
-            </select>
+            <select class="selectedColor"></select>
+            <select class="selectedColor"></select>
+            <select class="selectedColor"></select>
+            <select class="selectedColor"></select>
+            <select class="selectedColor"></select>
         </div>
         <div id="ouncesRowA">
                 <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
@@ -117,21 +27,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    function createFormulas(container) { //TODO change this to the new list of colorants
-        let formulas = []; //start up the list
-        let table = document.querySelector(container);
-        for (let i = 0; i < table.children.length; i++) { //Iterates through each table
-            let color = {}; //start up the dictionary
-            for (let j = 0; j < 5; j++) { //Iterates through each column. i is the table, j is the column
-                let colorant = table.children[i].children[0].children[j].value;
-                let ounces = + table.children[i].children[1].children[j].value;
-                let drops = + table.children[i].children[2].children[j].value;
-                color[colorant] = [ounces, drops];
-            }
-            formulas.push(color);
-        }
-        return formulas;
-    }
-</script>
