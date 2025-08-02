@@ -180,7 +180,8 @@
 
 <script>
     //Adds event listeners for the two buttons
-    const scaleButton = document.querySelector("#scaleButton").addEventListener("click", scale);
+    const scaleButton = document.querySelector("#scaleButton");
+    scaleButton.addEventListener("click", scale);
     //Gets our layoutcontainer for adding rows
     const colorContainer = document.querySelector("#colorA");
 
