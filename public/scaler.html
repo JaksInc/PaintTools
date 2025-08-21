@@ -52,6 +52,9 @@
     <script>
         const scaleButton = document.querySelector("#scaleButton");
         scaleButton.addEventListener("click", scale);
+        const colorsContainer = document.getElementById("colorsContainer");
+        colorsContainer.addEventListener("input", scale);
+        colorsContainer.addEventListener("change", scale);
 
         function scale() {
             const formula = createFormulas("#colorsContainer", true)[0];

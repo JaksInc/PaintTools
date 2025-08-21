@@ -102,6 +102,9 @@
 
         const combineButton = document.querySelector("#combineButton");
         combineButton.addEventListener("click", combineButtonClicked);
+        const colorsContainer = document.getElementById("colorsContainer");
+        colorsContainer.addEventListener("input", combineButtonClicked);
+        colorsContainer.addEventListener("change", combineButtonClicked);
         function combineButtonClicked() {
             let colors = createFormulas("#colorsContainer");
             let combinedColor = combineColors(colors[0], colors[1]);
