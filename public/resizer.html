@@ -76,13 +76,24 @@
         }
 
         const resizeButton = document.getElementById("resizeButton");
-        resizeButton.addEventListener("click", function () {
+        resizeButton.addEventListener("click", resizeButtonClicked);
+        const colorsContainer = document.getElementById("colorsContainer");
+        const originalSize = document.getElementById("originalSize");
+        const newSize = document.getElementById("newSize");
+        colorsContainer.addEventListener("input", resizeButtonClicked);
+        colorsContainer.addEventListener("change", resizeButtonClicked);
+        originalSize.addEventListener("input", resizeButtonClicked);
+        originalSize.addEventListener("change", resizeButtonClicked);
+        newSize.addEventListener("input", resizeButtonClicked);
+        newSize.addEventListener("change", resizeButtonClicked);
+
+        function resizeButtonClicked() {
             let originalFormula = createFormulas("#colorsContainer");
-            let originalSize = +document.getElementById("originalSize").value;
-            let newSize = +document.getElementById("newSize").value;
-            let resizedFormula = resize(originalFormula[0], originalSize, newSize);
+            let originalSizeVal = +originalSize.value;
+            let newSizeVal = +newSize.value;
+            let resizedFormula = resize(originalFormula[0], originalSizeVal, newSizeVal);
             displayResults(resizedFormula);
-        })
+        }
     </script>
 </body>
 </html>
