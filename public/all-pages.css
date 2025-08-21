@@ -25,35 +25,30 @@
 
     /* Color template */
     #colorsContainer {
-        display: table-row;
+        display: flex;
+        gap: 10px;
         width: 100%;
     }
 
-    #colorsContainer div {
-        display: table;
+    #colorsContainer .color {
+        display: flex;
+        flex-direction: column;
         padding: 3px 10px;
     }
 
-    #colorsContainer div * {
-        border: 2px solid var(--main-theme-color);
-        display: table-row;
-        box-sizing: border-box;
-        width: 20%;
-        max-width: 120px;
-        margin: 0px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        font-size: 1rem;
+    #colorsContainer .formulaRow {
+        display: flex;
     }
 
-    select {
+    #colorsContainer .formulaRow * {
         border: 2px solid var(--main-theme-color);
-        display: table-row;
         box-sizing: border-box;
         margin: 0px;
         padding-top: 10px;
         padding-bottom: 10px;
         font-size: 1rem;
+        flex: 1;
+        max-width: 120px;
     }
 
     #sizeSelectors {
