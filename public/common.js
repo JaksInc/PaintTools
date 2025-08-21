@@ -83,13 +83,14 @@
     const table = document.querySelector(container);
     for(let i=0; i<table.children.length; i++){
       const color = {};
-      const colorSelects = table.children[i].children[0].children;
-      for(let j=0; j<colorSelects.length; j++){
-        const colorant = colorSelects[j].value;
-        const ounces = +table.children[i].children[1].children[j].value;
-        const drops = +table.children[i].children[2].children[j].value;
+      const rows = table.children[i].children;
+      for(let j=0; j<rows.length; j++){
+        const inputs = rows[j].children;
+        const colorant = inputs[0].value;
+        const ounces = +inputs[1].value;
+        const drops = +inputs[2].value;
         if(includePercentage){
-          const percentage = +table.children[i].children[3].children[j].value;
+          const percentage = +inputs[3].value;
           color[colorant] = [ounces, drops, percentage];
         } else {
           color[colorant] = [ounces, drops];
