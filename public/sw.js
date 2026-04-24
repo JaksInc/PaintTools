@@ -1,4 +1,4 @@
-const version = "0.1.2"
+const version = "0.1.3"
 
 const assets = [
     "/all-pages.css",
@@ -6,6 +6,7 @@ const assets = [
     "/scaler.html",
     "/combiner.html",
     "/resizer.html",
+    "/differ.html",
     "/images/brushIcon-128.png",
     "/images/brushIcon-144.png",
     "/images/brushIcon-192.png",

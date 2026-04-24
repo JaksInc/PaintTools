@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paint Tools Alpha</title>
+    <script src="common.js"></script>
+</head>
+<body>
+    <h1 id="page-title">Formula Differ</h1>
+    <div id="colorsContainer">
+        <div id="colorA" class="color">
+            <div class="formulaRow">
+                <select class="selectedColor"></select>
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+            </div>
+            <div class="formulaRow">
+                <select class="selectedColor"></select>
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+            </div>
+            <div class="formulaRow">
+                <select class="selectedColor"></select>
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+            </div>
+            <div class="formulaRow">
+                <select class="selectedColor"></select>
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+            </div>
+            <div class="formulaRow">
+                <select class="selectedColor"></select>
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+            </div>
+        </div>
+        <div id="colorB" class="color">
+            <div class="formulaRow">
+                <select class="selectedColor"></select>
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+            </div>
+            <div class="formulaRow">
+                <select class="selectedColor"></select>
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+            </div>
+            <div class="formulaRow">
+                <select class="selectedColor"></select>
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+            </div>
+            <div class="formulaRow">
+                <select class="selectedColor"></select>
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+            </div>
+            <div class="formulaRow">
+                <select class="selectedColor"></select>
+                <input class="ounces" placeholder="Ounces" type="number" min="0" max="100">
+                <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+            </div>
+        </div>
+    </div>
+    <button id="diffButton">Diff</button>
+    <h1>Results</h1>
+    <div id="resultsArea">
+        <table id="resultsTable">
+            <tr id="resultColorNames"></tr>
+            <tr id="resultLabel"></tr>
+            <tr id="resultOunces"></tr>
+            <tr id="resultDrops"></tr>
+        </table>
+    </div>
+    <script>
+        const diffButton = document.getElementById('diffButton');
+        diffButton.addEventListener('click', runDiff);
+        const colorsContainer = document.getElementById('colorsContainer');
+        colorsContainer.addEventListener('input', runDiff);
+        colorsContainer.addEventListener('change', runDiff);
+
+        function runDiff() {
+            const formulas = createFormulas('#colorsContainer');
+            const A = formulas[0];
+            const B = formulas[1];
+
+            const shared = {};
+            const onlyA = {};
+            const onlyB = {};
+
+            const allColorants = new Set([
+                ...Object.keys(A).filter(c => c !== 'Select color'),
+                ...Object.keys(B).filter(c => c !== 'Select color')
+            ]);
+
+            allColorants.forEach(colorant => {
+                const inA = colorant in A;
+                const inB = colorant in B;
+                if (inA && inB) {
+                    const diffDrops = (A[colorant][0] * 384 + A[colorant][1]) -
+                                      (B[colorant][0] * 384 + B[colorant][1]);
+                    shared[colorant] = [Math.trunc(diffDrops / 384), diffDrops % 384];
+                } else if (inA) {
+                    onlyA[colorant] = A[colorant];
+                } else {
+                    onlyB[colorant] = B[colorant];
+                }
+            });
+
+            displayDiffs(shared, onlyA, onlyB);
+        }
+
+        function displayDiffs(shared, onlyA, onlyB) {
+            const names  = document.getElementById('resultColorNames');
+            const labels = document.getElementById('resultLabel');
+            const ounces = document.getElementById('resultOunces');
+            const drops  = document.getElementById('resultDrops');
+            [names, labels, ounces, drops].forEach(el => el.innerHTML = '');
+
+            function addEntry(colorant, oz, dr, label) {
+                const th = document.createElement('th');
+                th.textContent = colorant;
+                names.appendChild(th);
+
+                const lb = document.createElement('td');
+                lb.textContent = label;
+                labels.appendChild(lb);
+
+                const ozTd = document.createElement('td');
+                ozTd.textContent = (oz > 0 ? '+' : '') + oz;
+                ounces.appendChild(ozTd);
+
+                const drTd = document.createElement('td');
+                drTd.textContent = (dr > 0 ? '+' : '') + dr;
+                drops.appendChild(drTd);
+            }
+
+            for (const c in shared) addEntry(c, shared[c][0], shared[c][1], '');
+            for (const c in onlyA)  addEntry(c, onlyA[c][0],  onlyA[c][1],  'A only');
+            for (const c in onlyB)  addEntry(c, onlyB[c][0],  onlyB[c][1],  'B only');
+        }
+    </script>
+</body>
+</html>

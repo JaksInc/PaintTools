@@ -43,6 +43,7 @@
       {href:'scaler.html', text:'Scale'},
       {href:'combiner.html', text:'Combine'},
       {href:'resizer.html', text:'Resize'},
+      {href:'differ.html', text:'Differ'},
       {href:'https://encycolorpedia.com/', text:'Encycolorpedia', external:true},
       {href:'https://www.easyrgb.com/en/match.php', text:'EasyRGB', external:true}
     ];
