@@ -7,6 +7,7 @@
 
   // Add shared metadata, icons, stylesheet, and manifest
   function addHeadElements() {
+    if(document.querySelector('link[href="all-pages.css"]')) return;
     const head = document.head;
     const tags = [
       {tag:"link", rel:"stylesheet", href:"all-pages.css"},
@@ -38,6 +39,7 @@
 
   // Build navigation bar
   function buildNav(){
+    if(document.querySelector('nav')) return;
     const nav = document.createElement('nav');
     const links = [
       {href:'scaler.html', text:'Scale'},
@@ -129,7 +131,7 @@
   }
 
   function buildPasteInputs(){
-    document.querySelectorAll('#colorsContainer .color').forEach(colorDiv => {
+    document.querySelectorAll('#colorsContainer .color, .colorsContainer .color').forEach(colorDiv => {
       const wrapper = document.createElement('div');
       wrapper.className = 'colorGroup';
       colorDiv.parentNode.insertBefore(wrapper, colorDiv);

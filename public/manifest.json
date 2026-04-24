@@ -23,8 +23,8 @@
             "sizes": "512x512"
         }
     ],
-    "start_url": "scaler.html",
-    "background_color": "#888888",
+    "start_url": "index.html",
+    "background_color": "#1a1a1a",
     "display": "standalone",
-    "theme_color": "#888888"
+    "theme_color": "#F96302"
 }

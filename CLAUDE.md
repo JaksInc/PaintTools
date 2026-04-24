@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 PaintTools is a client-side Progressive Web App (PWA) for paint color calculations. It has no build system, no dependencies, and no test framework — it is vanilla HTML/CSS/JavaScript deployed directly to Firebase Hosting.
 
+The primary entry point is `public/index.html`, a single-page app where all four tools load at once and tab-switching shows/hides views with CSS. The four individual `*.html` pages (scaler, combiner, resizer, differ) remain for backward compatibility but are no longer the canonical entry point.
+
 ## Deployment
 
 There is no build step. The `public/` directory is the deployable artifact.
@@ -16,13 +18,19 @@ There is no build step. The `public/` directory is the deployable artifact.
 
 ## Architecture
 
+### SPA entry point (`public/index.html`)
+
+Contains all four tool views as `<section class="view">` elements shown/hides via the `.active` CSS class. A left sidebar `<div id="sidebar">` contains a `<nav>` with `data-view` links. Hash-based routing (`#scaler`, `#combiner`, etc.) is handled by `showView()` and `hashchange` in the page's inline `<script>`. All four tools' event listeners are wired in one `DOMContentLoaded` handler. Each view uses prefixed element IDs (`scaler-resultColorNames`, `combiner-resultsTable`, etc.) to avoid collisions. A `makeDisplay(namesEl, ouncesEl, dropsEl)` factory produces per-view result renderers.
+
+On mobile (≤ 640 px) the sidebar becomes a fixed bottom tab bar via a media query; external links are hidden at that breakpoint.
+
 ### Shared initialization (`public/common.js`)
 
 All pages load `common.js` as their first `<script>` tag. It runs as an IIFE and:
 
-1. Injects head metadata, stylesheet, icons, and PWA manifest links via `addHeadElements()`
+1. Injects head metadata, stylesheet, icons, and PWA manifest links via `addHeadElements()` — skips if `<link href="all-pages.css">` is already present (as it is in `index.html`)
 2. Registers the service worker for offline support
-3. On `DOMContentLoaded`: populates all `<select class="selectedColor">` dropdowns from the `COLORS` array and builds the bottom nav bar
+3. On `DOMContentLoaded`: populates all `<select class="selectedColor">` dropdowns from the `COLORS` array; calls `buildNav()` (skips if a `<nav>` already exists) for the legacy individual pages; calls `buildPasteInputs()` which targets both `#colorsContainer .color` and `.colorsContainer .color`
 
 Two functions are exposed as globals for page scripts to call:
 - `window.createFormulas(containerSelector, includePercentage?)` — reads the formula input grid from the DOM and returns an array of formula objects: `{ colorantName: [ounces, drops] }` or `{ colorantName: [ounces, drops, percentage] }`
