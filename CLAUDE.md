@@ -55,6 +55,7 @@ drops = totalDrops % 384
 | Scaler | `scaler.html` | Multiplies each colorant by a per-colorant percentage. Uses `createFormulas(..., true)` to include the percentage column. |
 | Combiner | `combiner.html` | Merges two formulas by halving each and summing. Carries drops overflow into ounces when drops ≥ 384. |
 | Resizer | `resizer.html` | Scales a formula from one batch size to another (8 oz / Quart / Gallon / 5 Gallon) using `scaleFactor = newSize / originalSize`. |
+| Differ | `differ.html` | Compares two formulas. Shared colorants show the signed A−B difference (positive = A has more); colorants only in one formula appear labelled "A only" or "B only". Uses a 4-row results table (`resultColorNames`, `resultLabel`, `resultOunces`, `resultDrops`) with a custom `displayDiffs` function instead of the shared `displayResults`. |
 
 ### Service worker (`public/sw.js`)
 
