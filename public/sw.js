@@ -1,6 +1,7 @@
-const version = "0.1.3"
+const version = "0.1.4"
 
 const assets = [
+    "/index.html",
     "/all-pages.css",
     "/common.js",
     "/scaler.html",

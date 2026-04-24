@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Tools for the paint desk.">
+    <meta name="theme-color" content="#F96302">
+    <title>Paint Tools</title>
+    <link rel="stylesheet" href="all-pages.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <script src="common.js"></script>
+</head>
+<body>
+<div id="shell">
+
+    <!-- ── Sidebar ──────────────────────────────────────────── -->
+    <div id="sidebar">
+        <div id="sidebar-header">
+            <h2>Paint Tools</h2>
+            <p>Paint desk utilities</p>
+        </div>
+        <nav>
+            <div class="nav-section-label">Tools</div>
+            <a class="nav-link" data-view="scaler"   href="#scaler">Scale</a>
+            <a class="nav-link" data-view="combiner" href="#combiner">Combine</a>
+            <a class="nav-link" data-view="resizer"  href="#resizer">Resize</a>
+            <a class="nav-link" data-view="differ"   href="#differ">Differ</a>
+            <hr class="nav-divider">
+            <div class="nav-section-label">External</div>
+            <a class="nav-link external" href="https://encycolorpedia.com/" target="_blank" rel="noopener">Encycolorpedia</a>
+            <a class="nav-link external" href="https://www.easyrgb.com/en/match.php" target="_blank" rel="noopener">EasyRGB</a>
+        </nav>
+    </div>
+
+    <!-- ── Main content ─────────────────────────────────────── -->
+    <main id="main-content">
+
+        <!-- ── Scaler ──────────────────────────────────────── -->
+        <section class="view active" id="view-scaler">
+            <div class="card">
+                <h1>Color Scaler</h1>
+                <div class="colorsContainer" id="scaler-colorsContainer">
+                    <div class="color">
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                            <input class="percentage" placeholder="%" type="number" min="-1000" max="1000">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                            <input class="percentage" placeholder="%" type="number" min="-1000" max="1000">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                            <input class="percentage" placeholder="%" type="number" min="-1000" max="1000">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                            <input class="percentage" placeholder="%" type="number" min="-1000" max="1000">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                            <input class="percentage" placeholder="%" type="number" min="-1000" max="1000">
+                        </div>
+                    </div>
+                </div>
+                <button id="scaleButton">Scale</button>
+            </div>
+            <div class="card">
+                <h2>Results</h2>
+                <table id="scaler-resultsTable">
+                    <tr id="scaler-resultColorNames"></tr>
+                    <tr id="scaler-resultOunces"></tr>
+                    <tr id="scaler-resultDrops"></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- ── Combiner ─────────────────────────────────────── -->
+        <section class="view" id="view-combiner">
+            <div class="card">
+                <h1>Color Combiner</h1>
+                <div class="colorsContainer" id="combiner-colorsContainer">
+                    <div class="color">
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                    </div>
+                    <div class="color">
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                    </div>
+                </div>
+                <button id="combineButton">Combine</button>
+            </div>
+            <div class="card">
+                <h2>Results</h2>
+                <table id="combiner-resultsTable">
+                    <tr id="combiner-resultColorNames"></tr>
+                    <tr id="combiner-resultOunces"></tr>
+                    <tr id="combiner-resultDrops"></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- ── Resizer ──────────────────────────────────────── -->
+        <section class="view" id="view-resizer">
+            <div class="card">
+                <h1>Formula Resizer</h1>
+                <div class="colorsContainer" id="resizer-colorsContainer">
+                    <div class="color">
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                    </div>
+                </div>
+                <div id="sizeSelectors">
+                    <select id="resizer-originalSize">
+                        <option value="8">8 oz</option>
+                        <option value="32">Quart</option>
+                        <option value="128">Gallon</option>
+                        <option value="640">5 Gallon</option>
+                    </select>
+                    <select id="resizer-newSize">
+                        <option value="8">8 oz</option>
+                        <option value="32">Quart</option>
+                        <option value="128">Gallon</option>
+                        <option value="640">5 Gallon</option>
+                    </select>
+                </div>
+                <button id="resizeButton">Resize</button>
+            </div>
+            <div class="card">
+                <h2>Results</h2>
+                <table id="resizer-resultsTable">
+                    <tr id="resizer-resultColorNames"></tr>
+                    <tr id="resizer-resultOunces"></tr>
+                    <tr id="resizer-resultDrops"></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- ── Differ ───────────────────────────────────────── -->
+        <section class="view" id="view-differ">
+            <div class="card">
+                <h1>Formula Differ</h1>
+                <div class="colorsContainer" id="differ-colorsContainer">
+                    <div class="color">
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                    </div>
+                    <div class="color">
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                        <div class="formulaRow">
+                            <select class="selectedColor"></select>
+                            <input class="ounces" placeholder="Oz" type="number" min="0" max="100">
+                            <input class="drops" placeholder="Drops" type="number" min="0" max="383">
+                        </div>
+                    </div>
+                </div>
+                <button id="diffButton">Diff</button>
+            </div>
+            <div class="card">
+                <h2>Results</h2>
+                <table id="differ-resultsTable">
+                    <tr id="differ-resultColorNames"></tr>
+                    <tr id="differ-resultLabel"></tr>
+                    <tr id="differ-resultOunces"></tr>
+                    <tr id="differ-resultDrops"></tr>
+                </table>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script>
+    // ── View switching ───────────────────────────────────────────
+    const VIEWS = ['scaler', 'combiner', 'resizer', 'differ'];
+
+    function showView(name) {
+        if (!VIEWS.includes(name)) name = 'scaler';
+        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+        document.querySelectorAll('.nav-link[data-view]').forEach(a => a.classList.remove('active'));
+        document.getElementById('view-' + name).classList.add('active');
+        const link = document.querySelector('.nav-link[data-view="' + name + '"]');
+        if (link) link.classList.add('active');
+        history.replaceState(null, '', '#' + name);
+    }
+
+    document.querySelectorAll('.nav-link[data-view]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            showView(a.dataset.view);
+        });
+    });
+
+    window.addEventListener('hashchange', () => {
+        showView(location.hash.slice(1));
+    });
+
+    // ── Tool logic ───────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+        showView(location.hash.slice(1) || 'scaler');
+
+        // ── Shared display helper ────────────────────────────────
+        function makeDisplay(namesEl, ouncesEl, dropsEl) {
+            return function(formula) {
+                [namesEl, ouncesEl, dropsEl].forEach(el => el.innerHTML = '');
+                for (const colorant in formula) {
+                    if (colorant === 'Select color') continue;
+                    const th = document.createElement('th');
+                    th.textContent = colorant;
+                    namesEl.appendChild(th);
+                    const oz = document.createElement('td');
+                    oz.textContent = formula[colorant][0];
+                    ouncesEl.appendChild(oz);
+                    const dr = document.createElement('td');
+                    dr.textContent = formula[colorant][1];
+                    dropsEl.appendChild(dr);
+                }
+            };
+        }
+
+        // ── Scaler ───────────────────────────────────────────────
+        const displayScaler = makeDisplay(
+            document.getElementById('scaler-resultColorNames'),
+            document.getElementById('scaler-resultOunces'),
+            document.getElementById('scaler-resultDrops')
+        );
+
+        function scale() {
+            const formula = createFormulas('#scaler-colorsContainer', true)[0];
+            const out = {};
+            for (const colorant in formula) {
+                if (colorant === 'Select color') continue;
+                const totalDrops = ((formula[colorant][0] * 384) + formula[colorant][1]) * (formula[colorant][2] / 100);
+                out[colorant] = [Math.floor(totalDrops / 384), Math.floor((totalDrops % 384) * 100) / 100];
+            }
+            displayScaler(out);
+        }
+
+        const scalerContainer = document.getElementById('scaler-colorsContainer');
+        document.getElementById('scaleButton').addEventListener('click', scale);
+        scalerContainer.addEventListener('input', scale);
+        scalerContainer.addEventListener('change', scale);
+
+        // ── Combiner ─────────────────────────────────────────────
+        const displayCombiner = makeDisplay(
+            document.getElementById('combiner-resultColorNames'),
+            document.getElementById('combiner-resultOunces'),
+            document.getElementById('combiner-resultDrops')
+        );
+
+        function combineColors(A, B) {
+            const out = {};
+            for (const c in A) {
+                const t = ((A[c][0] * 384) + A[c][1]) / 2;
+                out[c] = [Math.floor(t / 384), Math.round((t % 384) * 2) / 2];
+            }
+            for (const c in B) {
+                const t = ((B[c][0] * 384) + B[c][1]) / 2;
+                const oz = Math.floor(t / 384), dr = Math.round((t % 384) * 2) / 2;
+                if (c in out) {
+                    out[c][0] += oz;
+                    out[c][1] += dr;
+                    if (out[c][1] > 383) { out[c][0]++; out[c][1] -= 384; }
+                } else {
+                    out[c] = [oz, dr];
+                }
+            }
+            return out;
+        }
+
+        function combine() {
+            const colors = createFormulas('#combiner-colorsContainer');
+            displayCombiner(combineColors(colors[0], colors[1]));
+        }
+
+        const combinerContainer = document.getElementById('combiner-colorsContainer');
+        document.getElementById('combineButton').addEventListener('click', combine);
+        combinerContainer.addEventListener('input', combine);
+        combinerContainer.addEventListener('change', combine);
+
+        // ── Resizer ──────────────────────────────────────────────
+        const displayResizer = makeDisplay(
+            document.getElementById('resizer-resultColorNames'),
+            document.getElementById('resizer-resultOunces'),
+            document.getElementById('resizer-resultDrops')
+        );
+
+        const resizerOrigSize = document.getElementById('resizer-originalSize');
+        const resizerNewSize  = document.getElementById('resizer-newSize');
+
+        function resize() {
+            const formula = createFormulas('#resizer-colorsContainer')[0];
+            const factor = +resizerNewSize.value / +resizerOrigSize.value;
+            const out = {};
+            for (const colorant in formula) {
+                if (colorant === 'Select color') continue;
+                const resized = ((formula[colorant][0] * 384) + formula[colorant][1]) * factor;
+                out[colorant] = [Math.floor(resized / 384), Math.floor((resized % 384) * 100) / 100];
+            }
+            displayResizer(out);
+        }
+
+        const resizerContainer = document.getElementById('resizer-colorsContainer');
+        document.getElementById('resizeButton').addEventListener('click', resize);
+        resizerContainer.addEventListener('input', resize);
+        resizerContainer.addEventListener('change', resize);
+        resizerOrigSize.addEventListener('change', resize);
+        resizerNewSize.addEventListener('change', resize);
+
+        // ── Differ ───────────────────────────────────────────────
+        const differ_names  = document.getElementById('differ-resultColorNames');
+        const differ_label  = document.getElementById('differ-resultLabel');
+        const differ_ounces = document.getElementById('differ-resultOunces');
+        const differ_drops  = document.getElementById('differ-resultDrops');
+
+        function runDiff() {
+            const formulas = createFormulas('#differ-colorsContainer');
+            const A = formulas[0], B = formulas[1];
+            const shared = {}, onlyA = {}, onlyB = {};
+            const all = new Set([
+                ...Object.keys(A).filter(c => c !== 'Select color'),
+                ...Object.keys(B).filter(c => c !== 'Select color')
+            ]);
+            all.forEach(c => {
+                if (c in A && c in B) {
+                    const diff = (A[c][0] * 384 + A[c][1]) - (B[c][0] * 384 + B[c][1]);
+                    shared[c] = [Math.trunc(diff / 384), diff % 384];
+                } else if (c in A) {
+                    onlyA[c] = A[c];
+                } else {
+                    onlyB[c] = B[c];
+                }
+            });
+            displayDiffs(shared, onlyA, onlyB);
+        }
+
+        function displayDiffs(shared, onlyA, onlyB) {
+            [differ_names, differ_label, differ_ounces, differ_drops].forEach(el => el.innerHTML = '');
+            function addEntry(c, oz, dr, label) {
+                const th = document.createElement('th'); th.textContent = c; differ_names.appendChild(th);
+                const lb = document.createElement('td'); lb.textContent = label; differ_label.appendChild(lb);
+                const ozTd = document.createElement('td'); ozTd.textContent = (oz > 0 ? '+' : '') + oz; differ_ounces.appendChild(ozTd);
+                const drTd = document.createElement('td'); drTd.textContent = (dr > 0 ? '+' : '') + dr; differ_drops.appendChild(drTd);
+            }
+            for (const c in shared) addEntry(c, shared[c][0], shared[c][1], '');
+            for (const c in onlyA)  addEntry(c, onlyA[c][0],  onlyA[c][1],  'A only');
+            for (const c in onlyB)  addEntry(c, onlyB[c][0],  onlyB[c][1],  'B only');
+        }
+
+        const differContainer = document.getElementById('differ-colorsContainer');
+        document.getElementById('diffButton').addEventListener('click', runDiff);
+        differContainer.addEventListener('input', runDiff);
+        differContainer.addEventListener('change', runDiff);
+    });
+</script>
+</body>
+</html>
