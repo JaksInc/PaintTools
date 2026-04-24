@@ -80,25 +80,74 @@
   // Shared createFormulas function
   function createFormulas(container, includePercentage=false){
     const formulas = [];
-    const table = document.querySelector(container);
-    for(let i=0; i<table.children.length; i++){
+    document.querySelectorAll(container + ' .color').forEach(colorDiv => {
       const color = {};
-      const rows = table.children[i].children;
-      for(let j=0; j<rows.length; j++){
-        const inputs = rows[j].children;
+      colorDiv.querySelectorAll('.formulaRow').forEach(row => {
+        const inputs = row.children;
         const colorant = inputs[0].value;
         const ounces = +inputs[1].value;
         const drops = +inputs[2].value;
         if(includePercentage){
-          const percentage = +inputs[3].value;
-          color[colorant] = [ounces, drops, percentage];
+          color[colorant] = [ounces, drops, +inputs[3].value];
         } else {
           color[colorant] = [ounces, drops];
         }
-      }
+      });
       formulas.push(color);
-    }
+    });
     return formulas;
+  }
+
+  function parseFormulaString(str){
+    const normalized = str.replace(/\s*:\s*/g, ':').trim();
+    if(!normalized) return [];
+    return normalized.split(/\s+/).filter(Boolean).map(token => {
+      const parts = token.split(':');
+      if(parts.length < 3) return null;
+      return { color: parts[0], ounces: +parts[1] || 0, drops: +parts[2] || 0 };
+    }).filter(Boolean);
+  }
+
+  function loadFormulaIntoGrid(colorDiv, entries){
+    colorDiv.querySelectorAll('.formulaRow').forEach((row, i) => {
+      const select = row.querySelector('select.selectedColor');
+      const ouncesInput = row.querySelector('input.ounces');
+      const dropsInput = row.querySelector('input.drops');
+      const percentageInput = row.querySelector('input.percentage');
+      if(i < entries.length){
+        if(select) select.value = entries[i].color;
+        if(ouncesInput) ouncesInput.value = entries[i].ounces;
+        if(dropsInput) dropsInput.value = entries[i].drops;
+      } else {
+        if(select) select.value = 'Select color';
+        if(ouncesInput) ouncesInput.value = '';
+        if(dropsInput) dropsInput.value = '';
+        if(percentageInput) percentageInput.value = '';
+      }
+    });
+  }
+
+  function buildPasteInputs(){
+    document.querySelectorAll('#colorsContainer .color').forEach(colorDiv => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'colorGroup';
+      colorDiv.parentNode.insertBefore(wrapper, colorDiv);
+      wrapper.appendChild(colorDiv);
+
+      const pasteInput = document.createElement('input');
+      pasteInput.type = 'text';
+      pasteInput.className = 'formulaPaste';
+      pasteInput.placeholder = 'Paste formula (e.g. CL:3:318 IL:0:20)';
+      wrapper.insertBefore(pasteInput, colorDiv);
+
+      pasteInput.addEventListener('input', () => {
+        const entries = parseFormulaString(pasteInput.value);
+        if(entries.length){
+          loadFormulaIntoGrid(colorDiv, entries);
+          colorDiv.dispatchEvent(new Event('change', {bubbles: true}));
+        }
+      });
+    });
   }
 
   // Shared displayResults function
@@ -129,6 +178,7 @@
   // Expose functions globally
   window.createFormulas = createFormulas;
   window.displayResults = displayResults;
+  window.parseFormulaString = parseFormulaString;
 
   // initialize
   addHeadElements();
@@ -136,5 +186,6 @@
   document.addEventListener('DOMContentLoaded', () => {
     populateColorSelectors();
     buildNav();
+    buildPasteInputs();
   });
 })();
